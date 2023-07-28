@@ -1,0 +1,5 @@
+# executable info
+*.exe
+*.ilk
+*.obj
+*.pdb
