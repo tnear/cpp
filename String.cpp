@@ -102,6 +102,67 @@ void find_first_of()
     assert(out == 1);
 }
 
+// string& erase(size_t pos = 0, size_t len = npos)
+void erase()
+{
+    // position erase
+    string s = "hello world";
+    // erase "hello "
+    s.erase(0, 6);
+    assert(s == "world");
+
+    // iterator erase
+    s = "hello world";
+    // remove 'll'
+    s.erase(s.begin() + 2, s.begin() + 5);
+    assert(s == "he world");
+
+    // remove all letter 'l' using std::remove + erase()
+    s = "hello world";
+    s.erase(std::remove(s.begin(), s.end(), 'l'), s.end());
+    assert(s == "heo word");
+}
+
+void intToString()
+{
+    int x = 321;
+    assert(std::to_string(321) == "321");
+}
+
+void stringToInt()
+{
+    string s = "1234";
+    int result = stoi(s);
+    assert(result == 1234);
+}
+
+void append()
+{
+    string s = "hello";
+    // append string
+    s.append(" world");
+    assert(s == "hello world");
+
+    // append one char
+    s.append("!");
+    assert(s == "hello world!");
+
+    // builder (append returns reference to itself)
+    s = string{};
+    s.append("a").append("b").append("c");
+    assert(s == "abc");
+}
+
+void removeDuplicates()
+{
+    // see Unique.cpp for more info
+    string s = "aabcc";
+    auto it = std::unique(s.begin(), s.end());
+    assert(it == s.begin() + 3);
+    s.erase(it, s.end());
+    assert(s == "abc");
+}
+
 void test()
 {
     replace();
@@ -110,6 +171,11 @@ void test()
     substring();
     find();
     find_first_of();
+    erase();
+    intToString();
+    stringToInt();
+    append();
+    removeDuplicates();
 }
 
 int main()

@@ -1,8 +1,10 @@
 // Vectors are sequence containers representing arrays that can change in size.
 // https://cplusplus.com/reference/vector/vector/
 
+#include <algorithm>
 #include <cassert>
 #include <iostream>
+#include <set>
 #include <string>
 #include <unordered_set>
 #include <vector>
@@ -59,12 +61,43 @@ void back()
     assert(v.front() == 1);
 }
 
+void removeDuplicates()
+{
+    // see Unique.cpp for more info
+    vector<int> v = {1, 1, 2, 3, 3};
+    // use std::unique to move all non-duplicates to left
+    auto it = std::unique(v.begin(), v.end());
+
+    // because unique does not remove, you must call erase to change the size
+    assert(v.size() == 5);
+    v.erase(it, v.end());
+
+    vector<int> expV = {1, 2, 3};
+    assert(v == expV);
+}
+
+void assign()
+{
+    // create a vector with duplicates
+    vector<int> v = {1, 2, 3, 3, 4, 2, 1};   
+    // use a set to remove duplicates
+    std::set<int> s = {v.begin(), v.end()};
+
+    // use assign() to re-set vector. Can be used in place of constructor
+    v.assign(s.begin(), s.end());
+    
+    vector<int> expV = {1, 2, 3, 4};
+    assert(v == expV);
+}
+
 void test()
 {
     constructor();
     swap();
     insert();
     back();
+    removeDuplicates();
+    assign();
 }
 
 int main()
