@@ -66,6 +66,7 @@ void substring()
     assert(sub == "world");
 }
 
+// find substring within a string
 void find()
 {
     string s = "hello world";

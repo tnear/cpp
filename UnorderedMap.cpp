@@ -140,7 +140,26 @@ void hash_function()
 
 void customHashFunction()
 {
-    // todo:
+    // use std::hash to create a custom hash function for string type
+    auto customHashFcn = [] (const string &s)
+    {
+        return std::hash<string>()(s);
+    };
+
+    // the constructor which accepts a custom hash function also requires # buckets
+    // 10 is a decent placeholder
+    size_t initialNumBuckets = 10;
+
+    // create a map of string -> int using the custom hash function (plus initial bucket count)
+    unordered_map<string, int, decltype(customHashFcn)> m(initialNumBuckets, customHashFcn);
+
+    // add two entries of string -> int
+    m["abc"] = 1;
+    m["xyz"] = 10;
+
+    assert(m.count("abc") == 1 && m.count("xyz") == 1 && m.count("fake") == 0);
+    assert(m["abc"] == 1);
+    assert(m["xyz"] == 10);
 }
 
 void test()
