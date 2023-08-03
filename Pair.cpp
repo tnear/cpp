@@ -1,7 +1,7 @@
 /*
 <utility>
 https://cplusplus.com/reference/utility/pair/
- */
+*/
 
 #include <algorithm>
 #include <cassert>
@@ -50,11 +50,24 @@ void makePair()
     assert(p1 == std::make_pair(2, 3));
 }
 
+void tieFunction()
+{
+    std::pair<int, int> p = {1, 2};
+
+    // unpack elements using structured binding (C++17):
+    auto [left, right] = p;
+    // std::tie(left, right) = p; // alternative syntax
+
+    assert(left == 1);
+    assert(right == 2);
+}
+
 void test()
 {
     constructor();
     relationalOperators();
     makePair();
+    tieFunction();
 }
 
 int main()

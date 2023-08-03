@@ -5,6 +5,7 @@
         "vector": "cpp",
         "memory": "cpp",
         "iterator": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "tuple": "cpp"
     }
 }

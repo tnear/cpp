@@ -1,3 +1,8 @@
+/*
+https://cplusplus.com/reference/algorithm/unique/
+Removes all but the first element from every consecutive group of equivalent elements in the range [first,last).
+*/
+
 #include <algorithm>
 #include <cassert>
 #include <iostream>
@@ -32,11 +37,14 @@ void vec()
 
 void str()
 {
-    string s = "aabcc";
+    // data does not need to be sorted
+    string s = "ccbaac";
     auto it = std::unique(s.begin(), s.end());
-    assert(it == s.begin() + 3);
+    assert(it == s.begin() + 4);
     s.erase(it, s.end());
-    assert(s == "abc");
+
+    // note how duplicates can remain after calling std::unique (2 c's):
+    assert(s == "cbac");
 }
 
 void test()
