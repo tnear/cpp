@@ -1,10 +1,8 @@
-/*
-https://cplusplus.com/reference/algorithm/stable_partition/
-Rearranges the elements in the range [first, last), in such a way
-that all the elements for which pred returns true precede all
-those for which it returns false, and, unlike function partition,
-the relative order of elements within each group is preserved.
-*/
+// Rearranges the elements in the range [first, last), in such a way
+// that all the elements for which pred returns true precede all
+// those for which it returns false, and, unlike function partition,
+// the relative order of elements within each group is preserved.
+// https://cplusplus.com/reference/algorithm/stable_partition/
 
 #include <algorithm>
 #include <cassert>

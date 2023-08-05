@@ -1,7 +1,5 @@
-/*
-https://cplusplus.com/reference/algorithm/unique/
-Removes all but the first element from every consecutive group of equivalent elements in the range [first,last).
-*/
+// Removes all but the first element from every consecutive group of equivalent elements in the range [first,last).
+// https://cplusplus.com/reference/algorithm/unique/
 
 #include <algorithm>
 #include <cassert>

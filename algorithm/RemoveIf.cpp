@@ -1,12 +1,7 @@
-/*
-<algorithm>
-https://cplusplus.com/reference/algorithm/remove_if/
-
-std::remove_if does NOT alter elements in a container. It only returns an iterator
-to the new end of the range. Calling std::remove_if is a 2-step process.
-
-std::remove_if uses predicates, unlike std::remove
-*/
+// std::remove_if does NOT alter elements in a container. It only returns an iterator
+// to the new end of the range. Calling std::remove_if is a 2-step process.
+// std::remove_if uses predicates, unlike std::remove
+// https://cplusplus.com/reference/algorithm/remove_if/
 
 #include <algorithm>
 #include <cassert>

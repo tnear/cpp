@@ -6,6 +6,7 @@
         "memory": "cpp",
         "iterator": "cpp",
         "xutility": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "xhash": "cpp"
     }
 }

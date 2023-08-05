@@ -1,8 +1,6 @@
-/*
-https://cplusplus.com/reference/algorithm/rotate/
-Rotates the order of the elements in the range [first,last), in such a way
-that the element pointed by middle becomes the new first element.
-*/
+// Rotates the order of the elements in the range [first,last), in such a way
+// that the element pointed by middle becomes the new first element.
+// https://cplusplus.com/reference/algorithm/rotate/
 
 #include <algorithm>
 #include <cassert>

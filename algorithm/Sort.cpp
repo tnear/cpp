@@ -1,3 +1,6 @@
+// Sort elements in range
+// https://cplusplus.com/reference/algorithm/sort/
+
 #include <algorithm>
 #include <cassert>
 #include <iostream>

@@ -1,12 +1,8 @@
-/*
-<algorithm>
-https://cplusplus.com/reference/algorithm/remove/
-
-std::remove does NOT alter elements in a container. It only returns an iterator
-to the new end of the range. Calling std::remove is a 2-step process.
-
-std::remove can only return values. To use a lambda expression, use remove_if instead.
-*/
+// std::remove does NOT alter elements in a container. It only returns an iterator
+// to the new end of the range. Calling std::remove is a 2-step process.
+// to the new end of the range. Calling std::remove is a 2-step process.
+// std::remove can only search values. To use a lambda expression, use remove_if instead.
+// https://cplusplus.com/reference/algorithm/remove/
 
 #include <algorithm>
 #include <cassert>
