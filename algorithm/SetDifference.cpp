@@ -19,6 +19,7 @@ void basic()
     vector<int> ret;
 
     // use back_inserter to push_back elements into ret
+    // (without back_inserter, ret must be preallocated)
     std::set_difference(v1.begin(), v1.end(), v2.begin(), v2.end(), std::back_inserter(ret));
 
     // the values {2, 4} are in v1 but not v2:

@@ -90,6 +90,22 @@ void assign()
     assert(v == expV);
 }
 
+void erase()
+{
+    vector<int> v = {4, 3, 2, 1};
+
+    // remove front (pop_front)
+    v.erase(v.begin());
+
+    vector<int> expV = {3, 2, 1};
+    assert(v == expV);
+
+    // remove from middle
+    v.erase(v.begin() + 1);
+    expV = {3, 1};
+    assert(v == expV);
+}
+
 void test()
 {
     constructor();
@@ -98,6 +114,7 @@ void test()
     back();
     removeDuplicates();
     assign();
+    erase();
 }
 
 int main()
