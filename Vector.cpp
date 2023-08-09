@@ -79,31 +79,56 @@ void removeDuplicates()
 void assign()
 {
     // create a vector with duplicates
-    vector<int> v = {1, 2, 3, 3, 4, 2, 1};   
+    vector<int> v = {1, 2, 3, 3, 4, 2, 1};
     // use a set to remove duplicates
     std::set<int> s = {v.begin(), v.end()};
 
     // use assign() to re-set vector. Can be used in place of constructor
     v.assign(s.begin(), s.end());
-    
+
     vector<int> expV = {1, 2, 3, 4};
     assert(v == expV);
 }
 
 void erase()
 {
-    vector<int> v = {4, 3, 2, 1};
+    vector<int> v = {4, 3, 2, 1, 0};
 
     // remove front (pop_front)
     v.erase(v.begin());
-
-    vector<int> expV = {3, 2, 1};
+    vector<int> expV = {3, 2, 1, 0};
     assert(v == expV);
 
-    // remove from middle
-    v.erase(v.begin() + 1);
-    expV = {3, 1};
+    // erase range (elems 3, 2, 1)
+    v = {4, 3, 2, 1, 0};
+    v.erase(v.begin() + 1, v.begin() + 4);
+    expV = {4, 0};
     assert(v == expV);
+}
+
+void findExample()
+{
+    vector<int> v = {4, 1, 0, 3, 2};
+
+    // std::find does a linear search
+    auto it = std::find(v.begin(), v.end(), 3);
+    assert(*it == 3);
+
+    it = std::find(v.begin(), v.end(), -1);
+    assert(it == v.end());
+}
+
+void lowerBound()
+{
+    // lower_bound finds elements in O(lg n). It requires inputs to be sorted
+    vector<int> v = {1, 2, 3, 4, 5, 7, 8};
+    assert(std::is_sorted(v.begin(), v.end()));
+
+    // return is an iterator to first element in O(lg n) which does not compare < val
+    auto it = std::lower_bound(v.begin(), v.end(), 3);
+
+    // returns 3 because 3 is first element not less than 3
+    assert(*it == 3);
 }
 
 void test()
@@ -115,6 +140,8 @@ void test()
     removeDuplicates();
     assign();
     erase();
+    findExample();
+    lowerBound();
 }
 
 int main()

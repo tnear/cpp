@@ -22,7 +22,7 @@ void removeVowels()
     {
         return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
     };
-    
+
     // find new end of string location
     auto it = std::remove_if(s.begin(), s.end(), fn);
 

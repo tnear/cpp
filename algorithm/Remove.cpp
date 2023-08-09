@@ -19,7 +19,7 @@ void removeString()
     // remove all letter 'l' using std::remove + erase()
     // note: can only remove one letter using 'std::remove', not an entire string
     string s = "hello world";
-    
+
     // find new end of string location
     auto it = std::remove(s.begin(), s.end(), 'l');
 

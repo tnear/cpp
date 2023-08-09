@@ -71,7 +71,7 @@ void minHeap()
 
     // data is now lowest to highest due to using std::greater<T>
     vector<int> expData = {0, 1, 2, 3, 4, 6};
-    assert(result == expData);    
+    assert(result == expData);
 }
 
 void test()

@@ -1,4 +1,5 @@
 // Return iterator to lower bound
+// O(lg n) algorithm
 // https://cplusplus.com/reference/algorithm/lower_bound/
 
 #include <algorithm>
@@ -12,14 +13,14 @@ using namespace std;
 
 void basic()
 {
-    // std::lower_bound requires inputs be sorted
+    // std::lower_bound requires inputs to be sorted
     vector<int> v = {1, 2, 3, 4, 5, 7, 8};
     assert(std::is_sorted(v.begin(), v.end()));
 
-    // return is an iterator to first element which does not compare < val
+    // return is an iterator to first element in logarithmic time which does not compare < val
     auto it = std::lower_bound(v.begin(), v.end(), 3);
-    
-    // returns 3 b/c 3 is first element not less than 3
+
+    // returns 3 because 3 is first element not less than 3
     assert(*it == 3);
 
     // search non-existent element (6). Returns 7.
@@ -27,7 +28,7 @@ void basic()
     assert(*it == 7);
 
     // search smaller than min (-1), returns smallest element
-    it = std::lower_bound(v.begin(), v.end(), -1); 
+    it = std::lower_bound(v.begin(), v.end(), -1);
     assert(*it == 1);
 }
 
