@@ -3,6 +3,7 @@
 // those for which it returns false, and, unlike function partition,
 // the relative order of elements within each group is preserved.
 // https://cplusplus.com/reference/algorithm/stable_partition/
+// stable_partition(BidirectionalIterator first, BidirectionalIterator last, UnaryPredicate pred);
 
 #include <algorithm>
 #include <cassert>

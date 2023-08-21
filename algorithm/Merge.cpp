@@ -1,5 +1,6 @@
 // Combines the elements in the sorted ranges into new range
 // https://cplusplus.com/reference/algorithm/merge/
+// merge(InputIter1 first1, InputIter last1, InputIter2 first2, InputIter2 last2, OutputIter result, Compare comp);
 
 #include <algorithm>
 #include <cassert>

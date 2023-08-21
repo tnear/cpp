@@ -1,5 +1,6 @@
 // Difference of two sorted ranges
 // https://cplusplus.com/reference/algorithm/set_difference/
+// set_difference(InputIter1 first1, InputIter1 last1, InputIter2 first2, InputIter2 last2, OutputIter result);
 
 #include <algorithm>
 #include <cassert>

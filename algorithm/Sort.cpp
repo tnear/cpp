@@ -1,5 +1,6 @@
 // Sort elements in range
 // https://cplusplus.com/reference/algorithm/sort/
+// sort(RandomAccessIterator first, RandomAccessIterator last, Compare comp);
 
 #include <algorithm>
 #include <cassert>

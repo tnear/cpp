@@ -1,6 +1,7 @@
 // Return iterator to lower bound
 // O(lg n) algorithm
 // https://cplusplus.com/reference/algorithm/lower_bound/
+// lower_bound(ForwardIterator first, ForwardIterator last, const T& val);
 
 #include <algorithm>
 #include <cassert>

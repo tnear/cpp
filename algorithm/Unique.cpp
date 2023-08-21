@@ -1,5 +1,6 @@
 // Removes all but the first element from every consecutive group of equivalent elements in the range [first,last).
 // https://cplusplus.com/reference/algorithm/unique/
+// unique(ForwardIterator first, ForwardIterator last);
 
 #include <algorithm>
 #include <cassert>
@@ -18,9 +19,9 @@ void vec()
     auto it = std::unique(v.begin(), v.end());
 
     // it points to new past-the-end. after "removing" '1' and '3',
-    // it points to the first 3:
+    // it points to the first 3 ('x' denotes undefined data):
     // {1, 1, 2, 3, 3} // orig vector
-    // {1, 2, 3, u, u}
+    // {1, 2, 3, x, x}
     //           ^-- it location
 
     assert(it == v.begin() + 3);

@@ -2,6 +2,7 @@
 // to the new end of the range. Calling std::remove_if is a 2-step process.
 // std::remove_if uses predicates, unlike std::remove
 // https://cplusplus.com/reference/algorithm/remove_if/
+// remove_if(ForwardIterator first, ForwardIterator last, UnaryPredicate pred);
 
 #include <algorithm>
 #include <cassert>

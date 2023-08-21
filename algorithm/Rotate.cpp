@@ -1,6 +1,7 @@
 // Rotates the order of the elements in the range [first,last), in such a way
 // that the element pointed by middle becomes the new first element.
 // https://cplusplus.com/reference/algorithm/rotate/
+// rotate(ForwardIterator first, ForwardIterator middle, ForwardIterator last);
 
 #include <algorithm>
 #include <cassert>

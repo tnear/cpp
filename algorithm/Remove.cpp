@@ -3,6 +3,7 @@
 // to the new end of the range. Calling std::remove is a 2-step process.
 // std::remove can only search values. To use a lambda expression, use remove_if instead.
 // https://cplusplus.com/reference/algorithm/remove/
+// remove(ForwardIterator first, ForwardIterator last, const T& val);
 
 #include <algorithm>
 #include <cassert>
