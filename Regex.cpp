@@ -32,6 +32,11 @@ void regexSearch()
 
     // third element is the second capture group
     assert(match[2] == "August");
+
+    // match positions
+    assert(match.position(0) == 4); // "year" begins at idx=4
+    assert(match.position(1) == 12); // "2023" begins at idx=12
+    assert(match.position(2) == 34); // "August" begins at idx=34
 }
 
 // regex_match requires the whole string to match the pattern
@@ -48,10 +53,89 @@ void regexMatch()
     assert(!regex_match(text, pattern));
 }
 
+void firstOccurrence()
+{
+    string input = "hey hello world";
+
+    const regex pattern("he\\w+");
+
+    smatch match;
+
+    // regex_search only finds the first match.
+    // although 'hello' also matches, it is not returned
+    bool found = regex_search(input, match, pattern);
+    assert(found);
+
+    assert(match.size() == 1);
+    assert(match[0] == "hey");
+}
+
+// the return value is the updated string
+// note: overloads exist which work differently
+void regexReplace()
+{
+    const string input = "hey world";
+
+    // find leading h-word
+    regex pattern("^h\\w+");
+
+    // replace "hey" with "hello"
+    string result = regex_replace(input, pattern, "hello");
+    
+    assert(result == "hello world");
+
+    // the input string is unchanged
+    assert(input == "hey world");
+}
+
+void findAllMatches()
+{
+    const string input = "This is a test";
+
+    // pattern to find words
+    regex pattern("\\w+");
+
+    // use sregex_iterator to iterate over all matches
+    sregex_iterator next(input.begin(), input.end(), pattern);
+    sregex_iterator end;
+    vector<string> results;
+    while (next != end)
+    {
+        // get one match at a time
+        smatch match = *next;
+        results.push_back(match.str());
+        ++next;
+    }
+
+    assert(results.size() == 4);
+    assert(results[0] == "This");
+    assert(results[1] == "is");
+    assert(results[2] == "a");
+    assert(results[3] == "test");
+}
+
+void caseInsensitive()
+{
+    string input = "HELLO WORLD";
+
+    // use regex::icase to match
+    const regex pattern("hello", regex::icase);
+
+    smatch match;
+    regex_search(input, match, pattern);
+
+    assert(match.size() == 1);
+    assert(match[0] == "HELLO");
+}
+
 void test()
 {
     regexSearch();
     regexMatch();
+    firstOccurrence();
+    regexReplace();
+    findAllMatches();
+    caseInsensitive();
 }
 
 int main()
