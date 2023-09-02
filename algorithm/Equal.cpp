@@ -14,7 +14,7 @@ using namespace std;
 
 void basic()
 {
-    // create two vectors equal only for the first four elements
+    // create two vectors which are equal only for the first four elements
     vector<int> v1 = {1, 2, 3, 4, 5};
     vector<int> v2 = {1, 2, 3, 4};
 
