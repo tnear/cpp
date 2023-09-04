@@ -14,17 +14,16 @@ using namespace std;
 
 void basic()
 {
-    vector<int> v1 = {10, 10, 10, 10};
-    vector<int> v2 = {22, 22, 22, 22};
+    vector<int> v = {1, 2, 3, 2, 1};
 
-    // start swapping with the 2nd element in v1 and the first element in v2
-    // stop swapping when reaching the 2nd to last element in v1
-    std::swap_ranges(v1.begin() + 1, v1.end() - 1, v2.begin());
+    // preallocate destination vector
+    vector<int> destination(v.size());
 
-    vector<int> exp1 = {10, 22, 22, 10};
-    vector<int> exp2 = {10, 10, 22, 22};
-    assert(v1 == exp1);
-    assert(v2 == exp2);
+    // copy from v to destination but replace all 2 in source with 0 in destination
+    std::replace_copy(v.begin(), v.end(), destination.begin(), 2, 0);
+
+    vector<int> expV = {1, 0, 3, 0, 1};
+    assert(destination == expV);
 }
 
 void test()
