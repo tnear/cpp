@@ -124,10 +124,15 @@ void erase()
     assert(s == "heo word");
 }
 
-void intToString()
+// note: std::to_string cannot customize precision, use stringstream instead
+void numericToString()
 {
-    int x = 321;
+    // convert integer to string
     assert(std::to_string(321) == "321");
+
+    // convert double to string
+    string result = std::to_string(3.141);
+    assert(result == "3.141000");
 }
 
 void stringToInt()
@@ -164,6 +169,15 @@ void removeDuplicates()
     assert(s == "abc");
 }
 
+// stod: str -> double
+// stof: str -> float
+void stringToDouble()
+{
+    string str = " 123.456 "; // stod strips whitespace
+    double result = std::stod(str);
+    assert(result == 123.456);
+}
+
 void test()
 {
     replace();
@@ -173,10 +187,11 @@ void test()
     find();
     find_first_of();
     erase();
-    intToString();
+    numericToString();
     stringToInt();
     append();
     removeDuplicates();
+    stringToDouble();
 }
 
 int main()
