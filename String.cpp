@@ -67,6 +67,7 @@ void substring()
 }
 
 // find substring within a string
+// size_t idx = haystack.find(needle)
 void find()
 {
     string s = "hello world";
@@ -178,6 +179,22 @@ void stringToDouble()
     assert(result == 123.456);
 }
 
+// C++ does not have a native trim function for strings.
+// https://stackoverflow.com/questions/216823/how-to-trim-an-stdstring
+string& trim(string &str)
+{
+    str.erase(str.find_last_not_of(' ') + 1); // suffix spaces
+    str.erase(0, str.find_first_not_of(' ')); // prefix spaces
+    return str;
+}
+
+void trimFunction()
+{
+    string s = " a b c  ";
+    trim(s);
+    assert(s == "a b c");
+}
+
 void test()
 {
     replace();
@@ -192,6 +209,7 @@ void test()
     append();
     removeDuplicates();
     stringToDouble();
+    trimFunction();
 }
 
 int main()
