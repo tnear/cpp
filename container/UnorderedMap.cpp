@@ -162,6 +162,39 @@ void customHashFunction()
     assert(m["xyz"] == 10);
 }
 
+void iterate()
+{
+    unordered_map<char, int> m = {{'a', 1}, {'b', 2}, {'c', 4}};
+    vector<char> expKeys = {'a', 'b', 'c'};
+    vector<int> expValues = {1, 2, 4};
+
+    vector<char> keys;
+    vector<int> values;
+
+    // range-for uses pair<key, value>
+    for (const std::pair<char, int> &elem : m)
+    {
+        keys.push_back(elem.first);
+        values.push_back(elem.second);
+    }
+
+    assert(keys == expKeys);
+    assert(values == expValues);
+
+    keys.clear();
+    values.clear();
+
+    // C++17 structured binding
+    for (const auto &[key, value] : m)
+    {
+        keys.push_back(key);
+        values.push_back(value);
+    }
+    
+    assert(keys == expKeys);
+    assert(values == expValues);
+}
+
 void test()
 {
     constructor();
@@ -173,6 +206,7 @@ void test()
     reserve();
     hash_function();
     customHashFunction();
+    iterate();
 }
 
 int main()
