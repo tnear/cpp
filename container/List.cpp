@@ -20,9 +20,7 @@ void constructor()
     data.push_back(2);
     data.push_front(0);
 
-    vector<int> v;
-    for (int elem : data)
-        v.push_back(elem);
+    vector<int> v { data.begin(), data.end() };
 
     vector<int> expV = {0, 1, 2};
     assert(v == expV);

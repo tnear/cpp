@@ -195,6 +195,18 @@ void trimFunction()
     assert(s == "a b c");
 }
 
+void assign()
+{
+    string s; // empty string
+
+    size_t numel = 5;
+    char value = ' ';
+
+    // use asisgn() to create N elements of a particular value
+    s.assign(numel, value);
+    assert(s == "     ");
+}
+
 void test()
 {
     replace();
@@ -210,6 +222,7 @@ void test()
     removeDuplicates();
     stringToDouble();
     trimFunction();
+    assign();
 }
 
 int main()

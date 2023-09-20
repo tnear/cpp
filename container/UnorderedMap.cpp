@@ -195,6 +195,28 @@ void iterate()
     assert(values == expValues);
 }
 
+// if an element doesn't exist, [] will insert and default construct a value (zero for int)
+void bracketOperator()
+{
+    string s = "hello world";
+    unordered_map<char, int> charMap;
+
+    // reference non-existent element 'x'. This will insert and create value of zero
+    charMap['x'];
+    assert(charMap.size() == 1);
+    assert(charMap['x'] == 0);
+
+    // this behavior is useful incrementing values:
+    for (char c : s)
+    {
+        // this increments zero if elem doesn't exist, and increments existing value if it does
+        charMap[c]++;
+    }
+
+    assert(charMap['l'] == 3);
+    assert(charMap['z'] == 0);
+}
+
 void test()
 {
     constructor();
@@ -207,6 +229,7 @@ void test()
     hash_function();
     customHashFunction();
     iterate();
+    bracketOperator();
 }
 
 int main()
