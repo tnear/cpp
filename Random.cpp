@@ -1,5 +1,5 @@
 // Random
-// 
+//
 
 #include <algorithm>
 #include <cassert>

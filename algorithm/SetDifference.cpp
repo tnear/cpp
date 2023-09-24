@@ -1,4 +1,4 @@
-// Difference of two sorted ranges
+// Difference of two sorted ranges (setdiff)
 // https://cplusplus.com/reference/algorithm/set_difference/
 // set_difference(InputIter1 first1, InputIter1 last1, InputIter2 first2, InputIter2 last2, OutputIter result);
 
@@ -6,7 +6,6 @@
 #include <cassert>
 #include <iostream>
 #include <string>
-#include <unordered_map>
 #include <vector>
 
 using namespace std;
@@ -16,6 +15,9 @@ void basic()
     // std::set_difference requires inputs be sorted
     vector<int> v1 = {2, 4, 5};
     vector<int> v2 = {5, 6, 7};
+
+    assert(std::is_sorted(v1.begin(), v1.end()));
+    assert(std::is_sorted(v2.begin(), v2.end()));
 
     vector<int> ret;
 

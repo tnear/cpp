@@ -1,5 +1,4 @@
 // Regular Expressions <regex>
-// 
 
 #include <cassert>
 #include <iostream>
@@ -81,7 +80,7 @@ void regexReplace()
 
     // replace "hey" with "hello"
     string result = regex_replace(input, pattern, "hello");
-    
+
     assert(result == "hello world");
 
     // the input string is unchanged

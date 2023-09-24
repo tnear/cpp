@@ -21,7 +21,7 @@ void basic()
 
     // 10 is the first element in haystack which appears in needle
     assert(*it == 10);
-    assert(it == haystack.begin() + 3);    
+    assert(it == haystack.begin() + 3);
 }
 
 void predicate()

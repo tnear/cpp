@@ -1,3 +1,8 @@
+// Unordered maps are associative containers that store elements formed by the
+// combination of a key value and a mapped value, and which allows for fast
+// retrieval of individual elements based on their keys.
+// https://cplusplus.com/reference/unordered_map/unordered_map/
+
 #include <algorithm>
 #include <cassert>
 #include <iostream>
@@ -190,7 +195,7 @@ void iterate()
         keys.push_back(key);
         values.push_back(value);
     }
-    
+
     assert(keys == expKeys);
     assert(values == expValues);
 }

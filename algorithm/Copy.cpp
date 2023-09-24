@@ -20,7 +20,7 @@ void basic()
 
     // copy from input to output
     std::copy(input.begin(), input.end(), output.begin());
-    
+
     assert(input == output);
 }
 

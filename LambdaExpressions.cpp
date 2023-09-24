@@ -1,5 +1,5 @@
 // Lambda expressions
-// 
+//
 
 #include <algorithm>
 #include <cassert>
