@@ -202,9 +202,23 @@ void assign()
     size_t numel = 5;
     char value = ' ';
 
-    // use asisgn() to create N elements of a particular value
+    // use assign() to create N elements of a particular value
     s.assign(numel, value);
     assert(s == "     ");
+}
+
+// string& insert(size_t pos, const string &str)
+void insert()
+{
+    string s = "bcd";
+
+    // insert at beginning of string
+    s.insert(0, "a");
+    assert(s == "abcd");
+
+    // insert at idx=1
+    s.insert(1, "_-");
+    assert(s == "a_-bcd");
 }
 
 void test()
@@ -223,6 +237,7 @@ void test()
     stringToDouble();
     trimFunction();
     assign();
+    insert();
 }
 
 int main()

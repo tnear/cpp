@@ -5,6 +5,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <functional>
 #include <iostream>
 #include <string>
 #include <unordered_map>
@@ -143,28 +144,38 @@ void hash_function()
     assert(fn('a') != fn('b'));
 }
 
+// use std::hash to create a custom hash function for string type
+auto customHashFcn = [](const string &s)
+{
+    return std::hash<string>()(s);
+};
+
+// create a typedef so that this custom map can easily be used as a function argument
+using MapWithCustomHasher = unordered_map<string, int, std::function<size_t(const string &)>>;
+
+// uses typedef as function argument
+void customHashFunctionArg(MapWithCustomHasher &map)
+{
+    // add two entries of string -> int
+    map["abc"] = 1;
+    map["xyz"] = 10;
+
+    assert(map.count("abc") == 1 && map.count("xyz") == 1 && map.count("fake") == 0);
+    assert(map["abc"] == 1);
+    assert(map["xyz"] == 10);
+}
+
 void customHashFunction()
 {
-    // use std::hash to create a custom hash function for string type
-    auto customHashFcn = [] (const string &s)
-    {
-        return std::hash<string>()(s);
-    };
-
     // the constructor which accepts a custom hash function also requires # buckets
     // 10 is a decent placeholder
     size_t initialNumBuckets = 10;
 
     // create a map of string -> int using the custom hash function (plus initial bucket count)
-    unordered_map<string, int, decltype(customHashFcn)> m(initialNumBuckets, customHashFcn);
+    MapWithCustomHasher map(initialNumBuckets, customHashFcn);
 
-    // add two entries of string -> int
-    m["abc"] = 1;
-    m["xyz"] = 10;
-
-    assert(m.count("abc") == 1 && m.count("xyz") == 1 && m.count("fake") == 0);
-    assert(m["abc"] == 1);
-    assert(m["xyz"] == 10);
+    // pass this map as a function argument (using typedef)
+    customHashFunctionArg(map);
 }
 
 void iterate()
