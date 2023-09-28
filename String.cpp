@@ -109,8 +109,9 @@ void erase()
 {
     // position erase
     string s = "hello world";
-    // erase "hello "
-    s.erase(0, 6);
+    // erase "hello " (len = 6)
+    int len = 6;
+    s.erase(0, len);
     assert(s == "world");
 
     // iterator erase
@@ -123,6 +124,12 @@ void erase()
     s = "hello world";
     s.erase(std::remove(s.begin(), s.end(), 'l'), s.end());
     assert(s == "heo word");
+
+    // erase only the first 'l'
+    s = "hello";
+    len = 1;
+    s.erase(s.find('l'), len);
+    assert(s == "helo");
 }
 
 // note: std::to_string cannot customize precision, use stringstream instead
@@ -164,8 +171,13 @@ void removeDuplicates()
 {
     // see Unique.cpp for more info
     string s = "aabcc";
+    assert(std::is_sorted(s.begin(), s.end()));
+
+    // gather duplicate characters
     auto it = std::unique(s.begin(), s.end());
     assert(it == s.begin() + 3);
+
+    // erase them
     s.erase(it, s.end());
     assert(s == "abc");
 }
@@ -197,7 +209,7 @@ void trimFunction()
 
 void assign()
 {
-    string s; // empty string
+    string s;
 
     size_t numel = 5;
     char value = ' ';
