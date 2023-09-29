@@ -111,6 +111,12 @@ void erase()
     v.erase(v.begin() + 1, v.begin() + 4);
     expV = {4, 0};
     assert(v == expV);
+
+    // remove all ones (one-liner)
+    v = {2, 1, 1, 3, 1};
+    v.erase(std::remove(v.begin(), v.end(), 1), v.end());
+    expV = {2, 3};
+    assert(v == expV);
 }
 
 void findExample()
