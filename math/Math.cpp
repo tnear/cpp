@@ -1,6 +1,5 @@
 // Math.cpp
 
-#include <cmath>
 #include <cassert>
 #include <iostream>
 
