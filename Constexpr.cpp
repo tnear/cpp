@@ -42,10 +42,30 @@ void functions()
     static_assert(fib(n) == 75025);
 }
 
+// 'constexpr if' to evaluate numeric vs non-numeric at compile time
+template<typename T>
+constexpr auto myLength(const T& value)
+{
+    if constexpr (std::is_integral<T>::value) // numeric types
+        return value;
+    else
+        return value.length();
+}
+
+void constexprIf()
+{
+    // integer
+    static_assert(myLength(5) == 5);
+
+    // string
+    static_assert(myLength(std::string{"abc"}) == 3);
+}
+
 void test()
 {
     variables();
     functions();
+    constexprIf();
 }
 
 int main()

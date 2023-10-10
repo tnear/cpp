@@ -145,6 +145,33 @@ void equalRange()
     assert(itPair.second == s.begin());
 }
 
+// C++17
+// extract returns and removes an element
+void extract()
+{
+    set<int> s = {4, 1, 6, 7};
+
+    // extract 4
+    auto result = s.extract(4);
+    assert(result.value() == 4);
+    
+    // verify reduced size with '4' removed
+    assert(s.size() == 3);
+}
+
+// C++17
+// merge two sets
+void merge()
+{
+    set<int> s = {1, 2, 3};
+    set<int> s2 = {4, 5, 6, 7};
+
+    // merge() moves (not copies) s2 into s1
+    s.merge(s2);
+    assert(s.size() == 7);
+    assert(s2.empty()); // s2 gets emptied
+}
+
 void test()
 {
     constructor();
@@ -155,6 +182,8 @@ void test()
     count();
     lowerBound();
     equalRange();
+    extract();
+    merge();
 }
 
 int main()

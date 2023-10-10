@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.json": "jsonc",
         "xstring": "cpp",
         "string": "cpp",
         "vector": "cpp",
@@ -77,6 +78,7 @@
         "xlocmes": "cpp",
         "xlocmon": "cpp",
         "xloctime": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "map": "cpp"
     }
 }
