@@ -9,7 +9,6 @@
 #include <cassert>
 #include <iostream>
 #include <string>
-#include <unordered_map>
 #include <vector>
 
 using namespace std;
@@ -20,7 +19,7 @@ bool isOdd(int x)
 }
 
 // https://hackingcpp.com/cpp/std/algorithms.html#stable_partition
-void seanParent()
+void testVector()
 {
     // [0  1  2  3  4  5  6  7  8]
     //        ^begin      ^end
@@ -48,7 +47,7 @@ void seanParent()
 
 void test()
 {
-    seanParent();
+    testVector();
 }
 
 int main()
