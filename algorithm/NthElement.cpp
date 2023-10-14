@@ -21,7 +21,7 @@ void testVector()
     int N = 3;
     // nth_element will put the correct element (4) at index N
     std::nth_element(v.begin(), v.begin() + N, v.end());
-    
+
     // the nth element is in the correct spot, but the entire array is not necessarily sorted
     assert(v[N] == 4);
 }

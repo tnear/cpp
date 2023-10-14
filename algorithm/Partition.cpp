@@ -2,7 +2,7 @@
 // elements for which pred returns true precede all those for which it returns false.
 // The iterator returned points to the first element of the second group.
 // https://cplusplus.com/reference/algorithm/partition/
-// Iter partition (Iter first, Iter last, UnaryPredicate pred);
+// Iter partition(Iter first, Iter last, UnaryPredicate pred);
 
 #include <algorithm>
 #include <cassert>

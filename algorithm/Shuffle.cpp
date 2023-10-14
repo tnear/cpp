@@ -6,7 +6,6 @@
 
 #include <algorithm>
 #include <cassert>
-#include <chrono>
 #include <iostream>
 #include <random>
 #include <vector>
@@ -16,7 +15,7 @@ using namespace std;
 void testVector()
 {
     vector<int> v = {1, 2, 3, 4};
-    
+
     // random seed (commented out to make test deterministic)
     //unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     unsigned seed = 0;

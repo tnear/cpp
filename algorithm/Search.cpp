@@ -19,7 +19,7 @@ void basic()
 
     // find {3, 4, 5} in {1, 2, 3, 4, 5, 6}
     auto it = std::search(haystack.begin(), haystack.end(), needle.begin(), needle.end());
-    
+
     // the result points to elem=3 in the haystack container
     assert(it == haystack.begin() + 2);
     assert(*it == 3);

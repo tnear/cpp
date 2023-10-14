@@ -21,7 +21,7 @@ void testVector()
 {
     vector<int> v = {1, 2, 3, 4};
     std::reverse(v.begin(), v.end());
-    
+
     vector<int> exp = {4, 3, 2, 1};
     assert(v == exp);
 }

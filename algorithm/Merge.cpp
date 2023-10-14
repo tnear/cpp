@@ -20,7 +20,7 @@ void basic()
 
     // you always know the size for merge, so preallocating is faster than back_inserter
     vector<int> out(v.size() + w.size());
-    
+
     // merge v and w into out
     std::merge(v.begin(), v.end(), w.begin(), w.end(), out.begin());
 
