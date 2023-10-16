@@ -1,101 +1,70 @@
-// Tuple implementation using variadic templates
-// std::tuple should be used in practice. This is intended as an academic exercise
-// to get familiar with new C++11 and C++14 concepts (idea from C++ Templates, D. Vandevoorde)
+/*
+<tuple>
+https://cplusplus.com/reference/tuple/tuple/
+A tuple is an object capable to hold a collection of elements. Each element can be of a different type.
+*/
 
+#include <algorithm>
 #include <cassert>
-#include <functional>
 #include <iostream>
 #include <string>
-#include <utility>
+#include <tuple>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 
-template <typename... Types>
-class Tuple;
+using namespace std;
 
-template <typename Head, typename... Tail>
-class Tuple<Head, Tail...>
+void constructor()
 {
-private:
-    Head head;
-    Tuple<Tail...> tail;
+    // default constructor
+    std::tuple<string, int, double> t;
+    assert(std::get<0>(t) == "");
+    assert(std::get<1>(t) == 0);
+    assert(std::get<2>(t) == 0.0);
 
-public:
-    Tuple() = default;
-
-    Tuple(const Head &head, const Tuple<Tail...> &tail)
-        : head(head), tail(tail)
-    {
-    }
-
-    Tuple(const Head &head, const Tail &... tail)
-        : head(head), tail(tail...)
-    {
-    }
-
-    Head& getHead() { return head; }
-    const Head& getHead() const { return head; }
-    Tuple<Tail...>& getTail() { return tail; }
-    const Tuple<Tail...>& getTail() const { return tail; }
-};
-
-// Base case with zero template arguments
-template <>
-class Tuple<>
-{
-};
-
-// index into tuple during compilation and return head of current tail
-template <unsigned N>
-struct TupleGet
-{
-    template <typename Head, typename... Tail>
-    static auto apply(Tuple<Head, Tail...> const &t)
-    {
-        return TupleGet<N - 1>::apply(t.getTail());
-    }
-};
-
-template <>
-struct TupleGet<0>
-{
-    template <typename Head, typename... Tail>
-    static const Head & apply(Tuple<Head, Tail...> const &t)
-    {
-        return t.getHead();
-    }
-};
-
-// retrieve element by index, analogous to std::get
-template <unsigned N, typename... Types>
-auto get(Tuple<Types...> const &t)
-{
-    return TupleGet<N>::apply(t);
+    // value init constructor
+    std::tuple<string, int, double> t2 = {"hello", 1, 2.2};
+    assert(std::get<0>(t2) == "hello");
+    assert(std::get<1>(t2) == 1);
+    assert(std::get<2>(t2) == 2.2);
 }
 
-void testTuple()
+void tieFunction()
 {
-    // extract via head/tail
-    Tuple<int, double, std::string> t(17, 3.14, "Hello");
-    assert(t.getHead() == 17);
-    Tuple <double, std::string> t2 = t.getTail();
-    assert(t2.getHead() == 3.14);
-    Tuple <std::string> t3 = t2.getTail();
-    assert(t3.getHead() == "Hello");
-    Tuple<> t4 = t3.getTail();
-    // Empty tuple t4 has no methods
+    std::tuple<int, bool, char> tup = {2, true, 'c'};
 
-    // extract by index
-    assert(get<0>(t) == 17);
-    assert(get<1>(t) == 3.14);
-    assert(get<2>(t) == "Hello");
-    assert(get<0>(t3) == "Hello");
-    
-    // invalid indexes yield compile errors:
-    //assert(get<3>(t) == "Hello"); // <- compile error!
+    // unpack elements using structured binding (C++17) [std::tie is alternative syntax]
+    auto [x, y, z] = tup;
+    assert(x == 2);
+    assert(y == true);
+    assert(z == 'c');
+}
+
+void reassign()
+{
+    std::tuple<int, bool, char> tup = {2, true, 'c'};
+
+    // change values after tuple has been initialized (std::get returns a reference)
+    std::get<0>(tup) = 1;
+    std::get<1>(tup) = false;
+    std::get<2>(tup) = 'a';
+
+    assert(std::get<0>(tup) == 1);
+    assert(std::get<1>(tup) == false);
+    assert(std::get<2>(tup) == 'a');
+}
+
+void test()
+{
+    constructor();
+    tieFunction();
+    reassign();
 }
 
 int main()
 {
-    testTuple();
+    test();
 
     std::cout << std::endl << __FILE__ " tests passed!" << std::endl;
     return 0;
