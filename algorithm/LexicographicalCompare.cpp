@@ -13,7 +13,7 @@ using namespace std;
 void basic()
 {
     // many data types (such as string and vector) already support the '<' operator
-    // which makes lexicographical_compare unnecessary. Char arrays, need it.
+    // which makes lexicographical_compare unnecessary. Char arrays need it.
     char a[] = "Apple";
     char b[] = "Banana";
     char c[] = "Cherry";

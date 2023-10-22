@@ -46,10 +46,26 @@ void str()
     assert(s == "cbac");
 }
 
+void removeDuplicates()
+{
+    vector<int> v = {2, 1, 1, 4, 2, 3};
+
+    // sorting groups all identical elements to be adjacent
+    std::sort(v.begin(), v.end());
+
+    // unique checks for consecutive duplicate elements
+    // erase() removes them
+    v.erase(std::unique(v.begin(), v.end()), v.end());
+
+    vector<int> exp = {1, 2, 3, 4};
+    assert(v == exp);
+}
+
 void test()
 {
     vec();
     str();
+    removeDuplicates();
 }
 
 int main()

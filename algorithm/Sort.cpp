@@ -6,6 +6,7 @@
 #include <cassert>
 #include <iostream>
 #include <string>
+#include <numeric>
 #include <unordered_map>
 #include <vector>
 
@@ -33,10 +34,39 @@ void lambda()
     assert(v == expV);
 }
 
+// this function returns the index of where each element
+// in the original array would be located in the sorted array
+template <typename T>
+vector<int> returnIndexes(const vector<T> &input)
+{
+    vector<int> output(input.size());
+    std::iota(output.begin(), output.end(), 0);
+
+    std::sort(output.begin(), output.end(), [&] (const int left, const int right)
+    {
+        return input[left] < input[right];
+    });
+
+    return output;
+}
+
+void testReturnIndexes()
+{
+    vector<int> v = {3, 1, 2, 5, 4};
+    vector<int> indexes = returnIndexes(v);
+
+    // the lowest number (1) is at idx=1
+    // 2nd lowest (2) is at idx=2
+    // 3rd lowest (3) is at idx=0, ...
+    vector<int> exp = {1, 2, 0, 4, 3};
+    assert(indexes == exp);
+}
+
 void test()
 {
     basic();
     lambda();
+    testReturnIndexes();
 }
 
 int main()
