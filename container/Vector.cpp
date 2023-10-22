@@ -20,6 +20,12 @@ void constructor()
 
     vector<int> expResult = {1, 2, 3, 4};
     assert(v == expResult);
+
+    // initialize with specified value
+    // create 5 elements each with value -1
+    vector<int> v2(5, -1);
+    expResult = {-1, -1, -1, -1, -1};
+    assert(v2 == expResult);
 }
 
 void swap()

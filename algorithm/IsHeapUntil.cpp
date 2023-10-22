@@ -1,4 +1,4 @@
-// Test if range is heap
+// Test if range is max heap
 // https://cplusplus.com/reference/algorithm/is_heap_until/
 // RandomAccessIterator is_heap_until(RandomAccessIterator first, RandomAccessIterator last);
 
@@ -13,7 +13,7 @@ void testBasic()
 {
     vector<int> v1 = {1, 2, 3, 4, 5};
 
-    // make a heap
+    // make a max heap
     std::make_heap(v1.begin(), v1.end());
 
     vector<int> exp = {5, 4, 3, 1, 2};

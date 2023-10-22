@@ -1,4 +1,4 @@
-// Pop element from heap range
+// Make max heap from range
 // https://cplusplus.com/reference/algorithm/make_heap/
 // void make_heap(RandomAccessIterator first, RandomAccessIterator last);
 
@@ -13,7 +13,7 @@ void testBasic()
 {
     vector<int> v1 = {1, 2, 3, 4, 5};
     
-    // make a heap
+    // make a max heap
     std::make_heap(v1.begin(), v1.end());
 
     vector<int> exp = {5, 4, 3, 1, 2};

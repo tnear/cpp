@@ -1,4 +1,4 @@
-// Sorts the elements in the heap range [first,last) into ascending order.
+// Sorts the elements in the max heap range [first,last) into ascending order.
 // https://cplusplus.com/reference/algorithm/sort_heap/
 // void pop_heap(RandomAccessIterator first, RandomAccessIterator last);
 
@@ -13,7 +13,7 @@ void testBasic()
 {
     vector<int> v1 = {1, 2, 3, 4, 5};
     
-    // make a heap
+    // make a max heap
     std::make_heap(v1.begin(), v1.end());
     assert(!is_sorted(v1.begin(), v1.end()));
 

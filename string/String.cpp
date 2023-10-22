@@ -233,6 +233,20 @@ void insert()
     assert(s == "a_-bcd");
 }
 
+// as of C++20, transform is still the best way without external dependencies
+void lowerUpper()
+{
+    string s = "Hello";
+
+    // lowercase
+    std::transform(s.begin(), s.end(), s.begin(), ::tolower);
+    assert(s == "hello");
+
+    // uppercase
+    std::transform(s.begin(), s.end(), s.begin(), ::toupper);
+    assert(s == "HELLO");
+}
+
 void test()
 {
     replace();
@@ -250,6 +264,7 @@ void test()
     trimFunction();
     assign();
     insert();
+    lowerUpper();
 }
 
 int main()

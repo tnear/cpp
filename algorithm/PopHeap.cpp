@@ -1,4 +1,4 @@
-// Pop element from heap range
+// Pop element from max heap range
 // https://cplusplus.com/reference/algorithm/pop_heap/
 // void pop_heap(RandomAccessIterator first, RandomAccessIterator last);
 
@@ -13,7 +13,7 @@ void testBasic()
 {
     vector<int> v1 = {1, 2, 3, 4, 5};
     
-    // make a heap
+    // make a max heap
     std::make_heap(v1.begin(), v1.end());
 
     // use pop_heap transforms the heap so that the last element can be
