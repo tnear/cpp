@@ -150,6 +150,33 @@ void lowerBound()
     assert(*it == 3);
 }
 
+string join(const vector<string> &input, char separator)
+{
+    string result;
+
+    // iterate through strings
+    for (const string &s : input)
+    {
+        result += s + separator;
+    }
+
+    // remove separator character from end
+    result.erase(result.find_last_not_of(separator) + 1);
+
+    return result;
+}
+
+// there still isn't a clean, built-in way to do this as of C++20
+void join()
+{
+    // join strings based on separator character
+    vector<string> v = {"hello", "world", "test example"};
+    char separator = ';';
+    string result = join(v, separator);
+
+    assert(result == "hello;world;test example");
+}
+
 void test()
 {
     constructor();
@@ -161,6 +188,7 @@ void test()
     erase();
     findExample();
     lowerBound();
+    join();
 }
 
 int main()

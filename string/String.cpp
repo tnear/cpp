@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cassert>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -247,6 +248,30 @@ void lowerUpper()
     assert(s == "HELLO");
 }
 
+vector<string> split(const string &input, char separator)
+{
+    vector<string> result;
+    stringstream ss(input);
+    string token;
+
+    while (getline(ss, token, separator))
+    {
+        result.push_back(token);
+    }
+
+    return result;
+}
+
+void split()
+{
+    string s = "abc;def;ghi";
+    char separator = ';';
+
+    vector<string> result = split(s, separator);
+    vector<string> exp = {"abc", "def", "ghi"};
+    assert(result == exp);
+}
+
 void test()
 {
     replace();
@@ -265,6 +290,7 @@ void test()
     assign();
     insert();
     lowerUpper();
+    split();
 }
 
 int main()
