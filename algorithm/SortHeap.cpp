@@ -12,7 +12,7 @@ using namespace std;
 void testBasic()
 {
     vector<int> v1 = {1, 2, 3, 4, 5};
-    
+
     // make a max heap
     std::make_heap(v1.begin(), v1.end());
     assert(!is_sorted(v1.begin(), v1.end()));

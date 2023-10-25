@@ -14,7 +14,7 @@ void isMaxHeap()
     vector<int> v1 = {1, 2, 3, 4, 5};
 
     assert(!std::is_heap(v1.begin(), v1.end()));
-    
+
     // make a max heap
     std::make_heap(v1.begin(), v1.end());
 

@@ -4,7 +4,7 @@ To compare strings, FlyweightString only needs to compare pointers yielding O(1)
 To create strings, FlyweightString much check if the string already exists in the string pool.
     - if so, return pointer to existing string in pool
     - if not, insert into pool then return new address
-    
+
 The performance numbers below show that FlyweightString string comparison beats std::string (tested using short strings which use the short string optimization).
 However, the performance for FlyweightString's constructor is noticeably slower than std::string.
 
@@ -19,7 +19,7 @@ FlyweightConstructor * 1 instance + FlyweightCompare * x == StringConstructor * 
 ans =
 
    10.5723
-   
+
 Flyweight offers better performance when doing 11 or more string comparisons.
 Note: this result (11) is proportional to the string pool size
 

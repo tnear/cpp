@@ -27,7 +27,7 @@ void pairExample()
     {
         return pr.first;
     };
-    
+
     std::transform(v.begin(), v.end(), out.begin(), getFirstElem);
 
     vector<int> expV = {1, 3, 5};

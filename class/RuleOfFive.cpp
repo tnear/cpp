@@ -110,7 +110,7 @@ void test()
     // default constructor
     RuleOfFive e;
     // move assignment operator
-    e = std::move(d);  
+    e = std::move(d);
     assert(*e.getValue() == 10);
     // d has been moved from, so it no longer has a value:
     assert(!d.getValue());

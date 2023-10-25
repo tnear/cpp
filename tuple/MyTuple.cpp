@@ -88,7 +88,7 @@ void testTuple()
     assert(get<1>(t) == 3.14);
     assert(get<2>(t) == "Hello");
     assert(get<0>(t3) == "Hello");
-    
+
     // invalid indexes yield compile errors:
     //assert(get<3>(t) == "Hello"); // <- compile error!
 }

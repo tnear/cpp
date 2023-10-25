@@ -14,7 +14,7 @@ std::optional<string> getOptional(bool b)
 {
     if (b)
         return string{"hello"};
-    
+
     return std::nullopt; // or `return {};`
 }
 

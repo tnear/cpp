@@ -23,7 +23,7 @@ struct Doubler
 
 void testFreeFunction()
 {
-    constexpr int result = std::invoke(doubler, 5);   
+    constexpr int result = std::invoke(doubler, 5);
     static_assert(result == 10);
 }
 

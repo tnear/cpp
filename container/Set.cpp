@@ -154,7 +154,7 @@ void extract()
     // extract 4
     auto result = s.extract(4);
     assert(result.value() == 4);
-    
+
     // verify reduced size with '4' removed
     assert(s.size() == 3);
 }
