@@ -172,6 +172,16 @@ void merge()
     assert(s2.empty()); // s2 gets emptied
 }
 
+// C++20
+void contains()
+{
+    set<int> s = {2, 1, 0, 4};
+
+    assert(s.contains(0));
+    assert(s.contains(4));
+    assert(!s.contains(3));
+}
+
 void test()
 {
     constructor();
@@ -184,6 +194,7 @@ void test()
     equalRange();
     extract();
     merge();
+    contains();
 }
 
 int main()

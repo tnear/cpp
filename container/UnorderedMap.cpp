@@ -233,6 +233,16 @@ void bracketOperator()
     assert(charMap['z'] == 0);
 }
 
+// C++20
+void contains()
+{
+    unordered_map<char, int> m = {{'a', 1}, {'b', 2}, {'c', 4}};
+
+    assert(m.contains('a'));
+    assert(m.contains('b'));
+    assert(!m.contains(-1));
+}
+
 void test()
 {
     constructor();
@@ -246,6 +256,7 @@ void test()
     customHashFunction();
     iterate();
     bracketOperator();
+    contains();
 }
 
 int main()

@@ -43,9 +43,20 @@ void customHashFunction()
     customHashFunctionArg(set);
 }
 
+// C++20
+void contains()
+{
+    unordered_set<int> s = {2, 1, 0, 4};
+
+    assert(s.contains(0));
+    assert(s.contains(4));
+    assert(!s.contains(3));
+}
+
 void test()
 {
     customHashFunction();
+    contains();
 }
 
 int main()

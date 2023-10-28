@@ -6,22 +6,13 @@
 using namespace std;
 
 // C++ does not have a native function for binomial coefficient, so use the recursive definition
-int _nchoosek(int n, int k)
+int nchoosek(int n, int k)
 {
     if (k == 0)
         return 1;
 
-    int subResult = _nchoosek(n - 1, k - 1);
+    int subResult = nchoosek(n - 1, k - 1);
     return n * subResult / k;
-}
-
-void nchoosek()
-{
-    int n = 52;
-    int k = 3;
-
-    int result = _nchoosek(52, 3);
-    assert(result == 22100);
 }
 
 // this function overflows easily
@@ -41,6 +32,7 @@ int catalan(int n)
 {
     // equation for Catalan numbers:
     // c_n = (2n)! / ( (n+1)! * n! )
+    // 1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796, 58786, ...
 
     int top = factorial(2 * n);
     int bottomLeft = factorial(n + 1);
@@ -48,6 +40,26 @@ int catalan(int n)
 
     int result = top / (bottomLeft * bottomRight);
     return result;
+}
+
+int permutations(int n, int r)
+{
+    assert(n >= 0 && r >= 0);
+    // permutations = n! / (n - r)!
+    // where n = # items in set and r = # items taken
+    int result = factorial(n) / (factorial(n - r));
+    return result;
+}
+
+// "binomial coefficient" aka "n choose k" aka "combinations" aka "nCk"
+// order does not matter for combinations (unlike permutations)
+void test_nchoosek()
+{
+    int n = 52;
+    int k = 3;
+
+    int result = nchoosek(52, 3);
+    assert(result == 22100);
 }
 
 void testFactorial()
@@ -63,7 +75,6 @@ void testFactorial()
 
 void testCatalan()
 {
-    // 1, 1, 2, 5, 14, 42, 132, 429, ...
     int result = 0;
     result = catalan(1);
     assert(result == 1);
@@ -81,11 +92,20 @@ void testCatalan()
     assert(result == 42);
 }
 
+void testPermutations()
+{
+    assert(permutations(4, 1) == 4);
+    assert(permutations(6, 3) == 120);
+    assert(permutations(6, 0) == 1);
+    assert(permutations(4, 4) == 24);
+}
+
 void test()
 {
-    nchoosek();
+    test_nchoosek();
     testFactorial();
     testCatalan();
+    testPermutations();
 }
 
 int main()

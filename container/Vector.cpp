@@ -103,6 +103,7 @@ void assign()
     assert(v == expV);
 }
 
+// Note: can use std::erase in C++20 for vector
 void erase()
 {
     vector<int> v = {4, 3, 2, 1, 0};
@@ -123,6 +124,24 @@ void erase()
     v.erase(std::remove(v.begin(), v.end(), 1), v.end());
     expV = {2, 3};
     assert(v == expV);
+}
+
+// std::erase (defined in <vector>, C++20)
+void eraseCpp20()
+{
+    // erase
+    vector<int> v = {2, 1, 1, 3, 1};
+    std::erase(v, 1);
+    vector<int> exp = {2, 3};
+    assert(v == exp);
+
+    // erase_if
+    v = {2, 4, 1, 2, 3};
+
+    // erase odd numbers
+    std::erase_if(v, [] (int value) { return value % 2; });
+    exp = {2, 4, 2};
+    assert(v == exp);
 }
 
 void findExample()
@@ -186,6 +205,7 @@ void test()
     removeDuplicates();
     assign();
     erase();
+    eraseCpp20();
     findExample();
     lowerBound();
     join();

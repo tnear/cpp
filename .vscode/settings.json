@@ -79,6 +79,7 @@
         "xlocmon": "cpp",
         "xloctime": "cpp",
         "regex": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "numbers": "cpp"
     }
 }
