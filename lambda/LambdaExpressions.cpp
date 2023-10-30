@@ -55,12 +55,41 @@ void constexprLambda()
     static_assert(doubler(10) == 20);
 }
 
+// C++20 allowed lambda expressions to be templated
+void templateLambda()
+{
+    auto increment = []<typename T>(std::vector<T> &v)
+    {
+        // increment every element in vector
+        for (T &elem : v)
+        {
+            ++elem;
+        }
+    };
+
+    // vector<int>
+    vector<int> exp;
+    vector<int> v = {1, 2, 3};
+    increment(v);
+
+    exp = {2, 3, 4};
+    assert(v == exp);
+
+    // vector<float>
+    vector<double> d = {1.5, 2.5, 3.5};
+    increment(d);
+
+    vector<double> expD = {2.5, 3.5, 4.5};
+    assert(d == expD);
+}
+
 void test()
 {
     generalizedLambda();
     defaultParameters();
     returnLambda();
     constexprLambda();
+    templateLambda();
 }
 
 int main()

@@ -144,6 +144,16 @@ void eraseCpp20()
     assert(v == exp);
 }
 
+void eraseIndex()
+{
+    // remove index=2 (value=3)
+    vector<int> v = {1, 2, 3, 4};
+    v.erase(v.begin() + 2);
+
+    vector<int> exp = {1, 2, 4};
+    assert(v == exp);
+}
+
 void findExample()
 {
     vector<int> v = {4, 1, 0, 3, 2};
@@ -169,6 +179,7 @@ void lowerBound()
     assert(*it == 3);
 }
 
+// there still isn't a clean, built-in way to do this as of C++20
 string join(const vector<string> &input, char separator)
 {
     string result;
@@ -185,7 +196,6 @@ string join(const vector<string> &input, char separator)
     return result;
 }
 
-// there still isn't a clean, built-in way to do this as of C++20
 void join()
 {
     // join strings based on separator character
@@ -206,6 +216,7 @@ void test()
     assign();
     erase();
     eraseCpp20();
+    eraseIndex();
     findExample();
     lowerBound();
     join();
