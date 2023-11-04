@@ -206,6 +206,30 @@ void join()
     assert(result == "hello;world;test example");
 }
 
+// creates a subarray for v[begin:end] (end points one past end)
+// similar syntax as python
+template <typename T>
+vector<T> indexing(const vector<T> vec, int start, int stop)
+{
+    // we know the resulting size, so preallocate
+    vector<T> result(stop - start);
+
+    // copy between indexes
+    std::copy(vec.begin() + start, vec.begin() + stop, result.begin());
+    return result;
+}
+
+void indexing()
+{
+    vector<int> v = {1, 2, 3, 4, 5};
+
+    // get v[1:3] which equals {2, 3}
+    vector<int> result = indexing(v, 1, 3);
+
+    vector<int> exp = {2, 3};
+    assert(result == exp);
+}
+
 void test()
 {
     constructor();
@@ -220,6 +244,7 @@ void test()
     findExample();
     lowerBound();
     join();
+    indexing();
 }
 
 int main()
