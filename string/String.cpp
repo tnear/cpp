@@ -272,6 +272,22 @@ void split()
     assert(result == exp);
 }
 
+// C++20
+void startsWith()
+{
+    string s = "my test string";
+    assert(s.starts_with("my test"));
+    assert(!s.starts_with("string"));
+}
+
+// C++20
+void endsWith()
+{
+    string s = "my test string";
+    assert(s.ends_with("string"));
+    assert(!s.ends_with("my test"));
+}
+
 void test()
 {
     replace();
@@ -291,6 +307,8 @@ void test()
     insert();
     lowerUpper();
     split();
+    startsWith();
+    endsWith();
 }
 
 int main()

@@ -17,11 +17,11 @@ void constructor()
     std::vector<int> v = {2, 1, 4, 6, 0, 3};
 
     // create a priority queue of type int (max heap)
-    // (default container of vector<T> and comparator as std::less<T>)
+    // (default container is vector<T> and comparator is std::less<T>)
     priority_queue<int> pq = {v.begin(), v.end()};
     assert(pq.size() == 6);
 
-    // can also use push()
+    // push example
     priority_queue<int> pq2;
     pq2.push(1);
     pq2.push(2);
@@ -70,7 +70,7 @@ void minHeap()
         minHeap.pop();
     }
 
-    // data is now lowest to highest due to using std::greater<T>
+    // data is lowest to highest due to using std::greater<T>
     vector<int> expData = {0, 1, 2, 3, 4, 6};
     assert(result == expData);
 }

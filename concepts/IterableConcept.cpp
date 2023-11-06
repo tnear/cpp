@@ -16,7 +16,7 @@ using namespace std;
 
 // to print elements in a container, you need begin/end forward iterators
 // more complex concepts need a 'requires' expression
-template<typename T>
+template <typename T>
 concept Iterable = requires(T t)
 {
     { begin(t) } -> std::forward_iterator;

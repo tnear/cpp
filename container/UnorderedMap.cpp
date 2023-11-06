@@ -144,25 +144,31 @@ void hash_function()
     assert(fn('a') != fn('b'));
 }
 
-// use std::hash to create a custom hash function for string type
-auto customHashFcn = [](const string &s)
+// use std::hash to create a custom hash function for pair<int, int>
+auto customHashFcn = [](const pair<int, int> &p)
 {
-    return std::hash<string>()(s);
+    auto h1 = std::hash<int>{}(p.first);
+    auto h2 = std::hash<int>{}(p.second);
+    return h1 ^ h2;
 };
 
 // create a typedef so that this custom map can easily be used as a function argument
-using MapWithCustomHasher = unordered_map<string, int, std::function<size_t(const string &)>>;
+using MapWithCustomHasher = unordered_map<pair<int, int>, int, std::function<size_t(const pair<int, int> &)>>;
 
 // uses typedef as function argument
 void customHashFunctionArg(MapWithCustomHasher &map)
 {
-    // add two entries of string -> int
-    map["abc"] = 1;
-    map["xyz"] = 10;
+    // add two entries of pair<int, int> -> int
+    pair<int, int> p = {0, 1};
+    map[p] = 1;
+    p = {2, 3};
+    map[p] = 10;
 
-    assert(map.count("abc") == 1 && map.count("xyz") == 1 && map.count("fake") == 0);
-    assert(map["abc"] == 1);
-    assert(map["xyz"] == 10);
+    assert(map.count({0, 1}) == 1 && map.count({2, 3}) == 1 && map.count({-1, -1}) == 0);
+    p = {0, 1};
+    assert(map[p] == 1);
+    p = {2, 3};
+    assert(map[p] == 10);
 }
 
 void customHashFunction()
@@ -171,7 +177,7 @@ void customHashFunction()
     // 10 is a decent placeholder
     size_t initialNumBuckets = 10;
 
-    // create a map of string -> int using the custom hash function (plus initial bucket count)
+    // create a map of pair<int, int> -> int using the custom hash function (plus initial bucket count)
     MapWithCustomHasher map(initialNumBuckets, customHashFcn);
 
     // pass this map as a function argument (using typedef)

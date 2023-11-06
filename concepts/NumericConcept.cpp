@@ -26,15 +26,28 @@ T Add(T a, T b)
     return a + b;
 }
 
-// Syntax for 2+ types, plus no 'concept' keyword
+// syntax for 2+ types, plus no 'concept' keyword
+// uses a 'requires' clause (see IterableConcept for a 'requires' expression)
 template <typename T>
 requires std::integral<T> || std::floating_point<T>
-T Add2(T a, T b)
+T AddNumeric(T a, T b)
 {
     return a + b;
 }
 
-void numeric()
+template <typename T>
+concept Addable = requires (T a, T b)
+{
+    a + b; // Addable requires binary '+' operator
+};
+
+template <Addable T>
+T AddAddable(T a, T b)
+{
+    return a + b;
+}
+
+void testNumeric()
 {
     double d = Add(2.5, 3.0);
     assert(d == 5.5);
@@ -46,19 +59,39 @@ void numeric()
     // string s = Add(string{"ab"}, string{"cd"});
 }
 
-void intOrFloat()
+void testIntOrFloat()
 {
-    double d = Add2(2.5, 3.0);
+    double d = AddNumeric(2.5, 3.0);
     assert(d == 5.5);
 
-    int i = Add2(4, 5);
+    int i = AddNumeric(4, 5);
     assert(i == 9);
+}
+
+void testAddable()
+{
+    // a + b sums a and b
+    int a = 1, b = 2;
+    int result = AddAddable(a, b);
+    assert(result == 3);
+
+    // s + t concatenates
+    string s = "ab";
+    string t = "cd";
+    string str = AddAddable(s, t);
+    assert(str == "abcd");
+
+    // compilation fails with:
+    // the concept 'Addable<nullptr>' evaluated to false
+    // '+': illegal operand 'nullptr
+    //AddAddable(nullptr, nullptr);
 }
 
 void test()
 {
-    numeric();
-    intOrFloat();
+    testNumeric();
+    testIntOrFloat();
+    testAddable();
 }
 
 int main()
