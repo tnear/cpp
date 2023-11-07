@@ -12,7 +12,7 @@ https://en.cppreference.com/w/cpp/utility/source_location
 
 using namespace std;
 
-void log(const std::string &message, const std::source_location &location)
+void log(const std::string &message, const std::source_location &location = std::source_location::current())
 {
     // location.file_name() returns the name of the current file
     // location.line() returns the line number
@@ -26,8 +26,8 @@ void log(const std::string &message, const std::source_location &location)
 void testSourceLocation()
 {
     // output:
-    // File: SourceLocation.cpp, Line: 25, Function: void __cdecl testSourceLocation(void) => From testSourceLocation
-    log("From testSourceLocation", std::source_location::current());
+    // File: SourceLocation.cpp, Line: 30, Function: void __cdecl testSourceLocation(void) => From testSourceLocation
+    log("From testSourceLocation");
 }
 
 void test()
@@ -35,8 +35,8 @@ void test()
     testSourceLocation();
 
     // output:
-    // File: SourceLocation.cpp, Line: 35, Function: void __cdecl test(void) => From test
-    log("From test", std::source_location::current());
+    // File: SourceLocation.cpp, Line: 39, Function: void __cdecl test(void) => From test
+    log("From test");
 }
 
 int main()
