@@ -126,12 +126,13 @@ void erase()
     assert(v == expV);
 }
 
-// std::erase (defined in <vector>, C++20)
+// std::erase, defined in <vector>, C++20
 void eraseCpp20()
 {
     // erase
     vector<int> v = {2, 1, 1, 3, 1};
-    std::erase(v, 1);
+    size_t numElemRemoved = std::erase(v, 1);
+    assert(numElemRemoved == 3);
     vector<int> exp = {2, 3};
     assert(v == exp);
 

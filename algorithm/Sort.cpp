@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void basic()
+void sortAscending()
 {
     // std::sort sorts ascending by default
     vector<int> v = {3, 2, 10, 1};
@@ -20,6 +20,16 @@ void basic()
 
     vector<int> expV = {1, 2, 3, 10};
     assert(v == expV);
+}
+
+void sortDescending()
+{
+    // use std::greater to sort descending
+    vector<int> v = {3, 2, 10, 1};
+    std::sort(v.begin(), v.end(), std::greater<int>());
+
+    vector<int> exp = {10, 3, 2, 1};
+    assert(v == exp);
 }
 
 void lambda()
@@ -64,7 +74,8 @@ void testReturnIndexes()
 
 void test()
 {
-    basic();
+    sortAscending();
+    sortDescending();
     lambda();
     testReturnIndexes();
 }

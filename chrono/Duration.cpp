@@ -9,14 +9,13 @@
 #include <vector>
 
 using namespace std;
-using namespace std::chrono;
 
 void time()
 {
-    seconds sec{1};
+    chrono::seconds sec{1};
 
     // convert seconds to milliseconds
-    milliseconds mil{sec};
+    chrono::milliseconds mil{sec};
 
     // 1000ms = 1s
     assert(mil.count() == 1000);
@@ -24,25 +23,25 @@ void time()
 
 void durationFcn()
 {
-    seconds sec{1};
-    milliseconds mil{15};
+    chrono::seconds sec{1};
+    chrono::milliseconds mil{15};
 
     // 1000ms - 15 ms = 985ms
-    duration result = sec - mil;
+    chrono::duration result = sec - mil;
     assert(result.count() == 985);
 }
 
 void durationCast()
 {
-    seconds sec{11};
-    seconds sec2{1};
+    chrono::seconds sec{11};
+    chrono::seconds sec2{1};
 
     // duration_cast
-    milliseconds diff = duration_cast<milliseconds>(sec - sec2);
+    chrono::milliseconds diff = duration_cast<chrono::milliseconds>(sec - sec2);
     assert(diff.count() == 10 * 1000);
 
     // constructor cast
-    milliseconds diff2 = milliseconds{sec - sec2};
+    chrono::milliseconds diff2 = chrono::milliseconds{sec - sec2};
     assert(diff2.count() == 10 * 1000);
 }
 
