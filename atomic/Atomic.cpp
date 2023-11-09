@@ -28,27 +28,28 @@ void memoryOrder()
     memory_order_acquire
     memory_order_release
     memory_order_acq_rel
-    memory_order_seq_cst: operations are ordered sequentially consistent
+    memory_order_seq_cst [default]: operations are ordered sequentially consistent
+                                    (total global ordering)
     [strictest]
     */
 }
 
 void fetchAdd()
 {
-    atomic<int> counter = 0;
-    constexpr int NUM = 10;
+    atomic<int> counter{0};
+    constexpr int NUM = 10000;
     vector<thread> threads;
 
     auto atomicIncrementFcn = [&]()
     {
         for (int i = 0; i < NUM; ++i)
         {
-            // adds 1 to count atomically
-            ++counter;
+            // adds 2 to counter atomically using operator++
+            // note: counter = counter + 2 is *not* atomic
+            //counter += 2;
 
-            // note: if you need to specify a memory order
-            // or need the previous value returned, use fetch_add
-            // counter.fetch_add(1, memory_order_seq_cst);
+            // fetch_add allows specifying memory order plus it returns the previous value
+            int prevValue = counter.fetch_add(2, memory_order_relaxed);
         }
     };
 
@@ -64,13 +65,48 @@ void fetchAdd()
     }
 
     // the atomic variable ensured each increment happened atomically
-    assert(counter == NUM * NUM);
+    assert(counter == 2 * NUM * NUM);
+}
+
+std::atomic_flag atomicFlag = ATOMIC_FLAG_INIT;
+int gSharedData = 0;
+
+void worker(int id)
+{
+    // spin until flag is cleared (false), then set it to true
+    while (atomicFlag.test_and_set()) { }
+
+    // critical section begins
+    cout << "Thread " << id << " entering critical section.\n";
+    gSharedData++;
+    cout << "Thread " << id << " leaving critical section.\n";
+    // critical section ends
+
+    // clear flag
+    atomicFlag.clear();
+}
+
+// atomic flags are booleans which are guaranteed to be lock-free
+// atomic_flag supports test_and_set() and clear()
+void atomicFlagTest()
+{
+    vector<thread> threads;
+    constexpr int NUM = 4;
+
+    for (int i = 0; i < NUM; ++i)
+        threads.push_back(thread{worker, i});
+
+    for (auto &thread : threads)
+        thread.join();
+
+    assert(gSharedData == NUM);
 }
 
 void test()
 {
     memoryOrder();
     fetchAdd();
+    atomicFlagTest();
 }
 
 int main()

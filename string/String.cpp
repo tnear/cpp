@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cassert>
 #include <iostream>
+#include <ranges>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -246,8 +247,15 @@ void lowerUpper()
     // uppercase
     std::transform(s.begin(), s.end(), s.begin(), ::toupper);
     assert(s == "HELLO");
+
+    // ranges (C++20)
+    s = "Hello";
+    auto conv = s | views::transform(::tolower);
+    string result { conv.begin(), conv.end() };
+    assert(result == "hello");
 }
 
+// as of C++20, this is still the best way to split strings
 vector<string> split(const string &input, char separator)
 {
     vector<string> result;

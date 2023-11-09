@@ -87,12 +87,26 @@ void drop()
     assert(result == exp);
 }
 
+void leftTrimAndUppercase()
+{
+    string s = "  Hello world";
+
+    // drop_while skips spaces and transform converts what's left to uppercase
+    auto conv = s | views::drop_while(::isspace) | views::transform(::toupper);
+
+    // C++23 will add ranges::to<type> which makes this step easier
+    string result {conv.begin(), conv.end() };
+    assert(result == "HELLO WORLD");
+    cout << result;
+}
+
 void test()
 {
     rangeSort();
     filterAdaptor();
     compose();
     drop();
+    leftTrimAndUppercase();
 }
 
 int main()
