@@ -1,7 +1,7 @@
 /*
 The ranges library (C++20) is an extension and generalization of the algorithms
 and iterator libraries that makes them more powerful by making them
-composable and less error-prone. 
+composable and less error-prone.
 https://en.cppreference.com/w/cpp/ranges
 */
 

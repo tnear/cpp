@@ -110,7 +110,7 @@ void yield()
 {
     constexpr int num = 4;
     thread threads[num];
-    
+
     for (int i = 0; i < num; ++i)
     {
         threads[i] = thread{_count, i};

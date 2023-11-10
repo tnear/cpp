@@ -80,6 +80,7 @@
         "xloctime": "cpp",
         "regex": "cpp",
         "map": "cpp",
-        "numbers": "cpp"
+        "numbers": "cpp",
+        "future": "cpp"
     }
 }

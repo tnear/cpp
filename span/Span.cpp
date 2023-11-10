@@ -36,6 +36,25 @@ void beginEnd()
     assert(*(s.end() - 1) == 4);
 }
 
+void subspan()
+{
+    vector<int> v = {1, 2, 3, 4};
+    span<int> s { v };
+
+    // subspan() method
+    // offset=1, count=2
+    span<int> sub = s.subspan(1, 2);
+    assert(sub.size() == 2);
+    assert(sub[0] == 2);
+    assert(sub[1] == 3);
+
+    // subspan (concept) -- pass indexes to constructor
+    span<int> sub2 { v.begin() + 1, v.begin() + 3 };
+    assert(sub2.size() == 2);
+    assert(sub2[0] == 2);
+    assert(sub2[1] == 3);
+}
+
 void data()
 {
     vector<int> v = {1, 2, 3, 4};
@@ -96,6 +115,7 @@ void test()
 {
     rangeFor();
     beginEnd();
+    subspan();
     data();
     arrayTest();
     empty();
