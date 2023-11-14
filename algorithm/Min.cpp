@@ -45,7 +45,8 @@ void testComparator()
 // C++11
 void testInitializerList()
 {
-    int result = std::min({3, 2, 4, 1, 5});
+    int num = 2;
+    int result = std::min({3, num, 4, 1, 5});
     assert(result == 1);
 }
 

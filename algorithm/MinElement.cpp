@@ -15,7 +15,7 @@ void testValue()
     auto it = std::min_element(values.begin(), values.end());
 
     assert(*it == 1);
-    assert(it == values .begin() + 1);
+    assert(it == values.begin() + 1);
 }
 
 struct MyData
