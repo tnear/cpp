@@ -12,6 +12,8 @@
 
 using namespace std;
 
+// lower_bound returns iterator to 1st elem NOT considered to go before VAL
+// upper_bound returns iterator to 1st elem which goes after VAL
 void basic()
 {
     // std::lower_bound requires inputs to be sorted
@@ -41,16 +43,38 @@ void binarySearch()
 
     // 2 is not in array, so lower_bound returns 1st elem which is not < val (3 in this case)
     auto it = std::lower_bound(v.begin(), v.end(), 2);
-    cout << *it;
     bool found = *it == 2;
     assert(!found);
     assert(*it == 3);
+}
+
+// lower_bound returns iterator to 1st elem NOT considered to go before VAL
+// for [3, 4, 5, 7] and searching for 6,
+// lower_bound returns 7 (because 7 does not go before 6)
+// this is why you must check if return equals the target before returning index
+int _getIndex(const vector<int> &v, int value)
+{
+    auto it = ranges::lower_bound(v, value);
+    if (it != v.end() && *it == value)
+        return distance(v.begin(), it); // found!
+
+    return -1; // did not find
+}
+
+void getIndex()
+{
+    vector<int> v = {3, 4, 5, 7};
+
+    assert(_getIndex(v, 5) == 2);
+    assert(_getIndex(v, 6) == -1);
+    assert(_getIndex(v, 100) == -1);
 }
 
 void test()
 {
     basic();
     binarySearch();
+    getIndex();
 }
 
 int main()

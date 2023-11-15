@@ -28,6 +28,7 @@ void upperBound()
 void test()
 {
     upperBound();
+    // getIndex(); <-- see LowerBound.cpp for an example
 }
 
 int main()

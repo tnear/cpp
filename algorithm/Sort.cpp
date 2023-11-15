@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <execution>
 #include <iostream>
 #include <string>
 #include <numeric>
@@ -72,12 +73,22 @@ void testReturnIndexes()
     assert(indexes == exp);
 }
 
+void parallel()
+{
+    // use execution::par in <execution> to run an algorithm in parallel
+    vector<int> data = {0, 4, 1, 2, 5, 3, 6};
+    std::sort(std::execution::par, data.begin(), data.end());
+    vector<int> exp = {0, 1, 2, 3, 4, 5, 6};
+    assert(data == exp);
+}
+
 void test()
 {
     sortAscending();
     sortDescending();
     lambda();
     testReturnIndexes();
+    parallel();
 }
 
 int main()

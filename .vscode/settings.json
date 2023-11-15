@@ -81,6 +81,14 @@
         "regex": "cpp",
         "map": "cpp",
         "numbers": "cpp",
-        "future": "cpp"
+        "future": "cpp",
+        "array": "cpp",
+        "condition_variable": "cpp",
+        "coroutine": "cpp",
+        "execution": "cpp",
+        "resumable": "cpp",
+        "source_location": "cpp",
+        "stack": "cpp",
+        "variant": "cpp"
     }
 }

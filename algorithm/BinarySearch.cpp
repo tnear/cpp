@@ -6,11 +6,12 @@
 #include <algorithm>
 #include <cassert>
 #include <iostream>
+#include <ranges>
 #include <vector>
 
 using namespace std;
 
-void testBinarySearch()
+void integerVector()
 {
     vector<int> v = {10, 20, 30, 40, 70, 80, 100};
 
@@ -23,9 +24,18 @@ void testBinarySearch()
     assert(!result);
 }
 
+void stringVector()
+{
+    vector<string> data = {"apple", "banana", "cherry", "grape", "plum"};
+
+    assert(ranges::binary_search(data, "grape"));
+    assert(!ranges::binary_search(data, "orange"));
+}
+
 void test()
 {
-    testBinarySearch();
+    integerVector();
+    stringVector();
 }
 
 int main()
