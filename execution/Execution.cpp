@@ -12,13 +12,14 @@
 
 using namespace std;
 
-void policy()
+void executionPolicy()
 {
     /*
+    There are 4 execution policies:
     std::execution::seq       -> executes sequentially
-    std::execution::seq       -> executes in parallel
-    std::execution::par_unseq -> parallel without guaranteeing the order they are processed
-                                 may use SIMD instructions and vectorization
+    std::execution::par       -> executes in parallel
+    std::execution::par_unseq -> parallel unsequenced. Does not guarantee order elements are processed.
+                                 May use SIMD instructions and vectorization
     std::execution::unseq     -> algorithm may be vectorized in a single thread
                                  avoids race conditions due to being single-threaded
     */
@@ -36,7 +37,7 @@ void parallelSort()
 
 void test()
 {
-    policy();
+    executionPolicy();
     parallelSort();
 }
 

@@ -62,10 +62,23 @@ void structExample()
     assert(out == expV);
 }
 
+void sameContainer()
+{
+    vector<int> numbers = {1, 2, 3, 4, 5};
+    auto doubler = [] (int x) { return x + x; };
+
+    // use the same input and output container to update in place
+    std::transform(numbers.begin(), numbers.end(), numbers.begin(), doubler);
+
+    vector<int> exp = {2, 4, 6, 8, 10};
+    assert(numbers == exp);
+}
+
 void test()
 {
     pairExample();
     structExample();
+    sameContainer();
 }
 
 int main()

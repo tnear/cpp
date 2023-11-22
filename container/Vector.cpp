@@ -94,7 +94,7 @@ void assign()
     // create a vector with duplicates
     vector<int> v = {1, 2, 3, 3, 4, 2, 1};
     // use a set to remove duplicates
-    std::set<int> s = {v.begin(), v.end()};
+    set<int> s = {v.begin(), v.end()};
 
     // use assign() to re-set vector. Can be used in place of constructor
     v.assign(s.begin(), s.end());
