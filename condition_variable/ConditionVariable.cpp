@@ -41,7 +41,7 @@ void consumer(int id)
     while (true)
     {
         // waiting for a condition_variable is a 2-step process:
-        // 1. acquire the lock 
+        // 1. acquire the lock
         unique_lock<mutex> guard{gMutex};
         // 2. wait for condition variable. wait() causes the current thread
         // to block until the condition variable is notified or a spurious wakeup occurs.

@@ -217,6 +217,28 @@ void iterate()
     assert(values == expValues);
 }
 
+void iterateChangeValue()
+{
+    unordered_map<char, int> m = {{'a', 1}, {'b', 2}, {'c', 3}};
+
+    // key must be const: 'const char' in this case
+    for (pair<const char, int> &myPair : m)
+        myPair.second = 0;
+
+    // 'auto' also works
+    for (auto &myPair : m)
+        myPair.second = 0;
+
+    /* non-const key causes build error:
+    for (pair<char, int> &myPair : m)
+        myPair.second = 0;
+    */
+
+    assert(m['a'] == 0);
+    assert(m['b'] == 0);
+    assert(m['c'] == 0);
+}
+
 // if an element doesn't exist, [] will insert and default construct a value (zero for int)
 void bracketOperator()
 {
@@ -261,6 +283,7 @@ void test()
     hash_function();
     customHashFunction();
     iterate();
+    iterateChangeValue();
     bracketOperator();
     contains();
 }

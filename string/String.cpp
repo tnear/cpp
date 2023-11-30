@@ -135,7 +135,7 @@ void erase()
 }
 
 // note: std::to_string cannot customize precision, use stringstream instead
-void numericToString()
+void intToString()
 {
     // convert integer to string
     assert(std::to_string(321) == "321");
@@ -305,7 +305,7 @@ void test()
     find();
     find_first_of();
     erase();
-    numericToString();
+    intToString();
     stringToInt();
     append();
     removeDuplicates();
