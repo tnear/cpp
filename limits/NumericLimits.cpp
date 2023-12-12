@@ -28,6 +28,10 @@ void minTest()
     // ...but returns a positive result for double
     double d = std::numeric_limits<double>::min();
     assert(d == 2.2250738585072014e-308);
+
+    // use lowest() to get the lowest negative number
+    double lowest = numeric_limits<double>::lowest();
+    assert(lowest < -1.7976e308);
 }
 
 void infinity()

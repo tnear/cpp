@@ -24,13 +24,16 @@ void constructor()
 
     vector<int> expV = {0, 1, 2};
     assert(v == expV);
+
+    // range constructor
+    list<int> data2 { v.begin(), v.end() };
+    assert(data2.size() == 3);
 }
 
-// Lists have a sort method which runs in O (N lg N)
+// Lists have a sort method which runs in O (n lg n)
 void sortList()
 {
     list<int> data = {3, 1, 0, 4, 2};
-    // sort
     data.sort();
 
     // verify new order
@@ -52,7 +55,7 @@ void splice()
     assert(*it == 3);
 
     // splice data2 into data1 at value=3
-    // this inserts {4, 5, 6} just before value=3
+    // this inserts {4, 5, 6} just before value=3 and removes them from data2
     data1.splice(it, data2);
 
     list<int> expData = {1, 2, 4, 5, 6, 3};
@@ -61,7 +64,7 @@ void splice()
     assert(data2.empty());
 }
 
-// list::remove changes the container size (unlike std::remove)
+// remove() changes the container size (unlike std::remove)
 void removeList()
 {
     list<int> data = {1, 2, 2, 1, 3};
@@ -73,7 +76,8 @@ void removeList()
     assert(data == expData);
 }
 
-// list::unique changes the container size (unlike std::unique)
+// removes adjacent identical values
+// unique() changes the container size (unlike std::unique)
 void uniqueList()
 {
     list<int> data = {2, 2, 1, 1, 1, 0};

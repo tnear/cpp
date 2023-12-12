@@ -90,6 +90,31 @@ void find()
     }
 }
 
+// returns all indexes of a string
+// ex: "a b a c" for "a" returns indexes [0, 4]
+vector<size_t> findAll(const string &haystack, const string &needle)
+{
+    vector<size_t> indexes;
+
+    size_t pos = haystack.find(needle);
+    while (pos != string::npos)
+    {
+        indexes.push_back(pos);
+        pos = haystack.find(needle, pos + 1);
+    }
+    return indexes;
+}
+
+void findAll()
+{
+    string s = "abc def abc xyz";
+    string t = "abc";
+    vector<size_t> indexes = findAll(s, t);
+    assert(indexes.size() == 2);
+    assert(indexes[0] == 0);
+    assert(indexes[1] == 8);
+}
+
 void find_first_of()
 {
     // searches for ANY characters which match
@@ -303,6 +328,7 @@ void test()
     replaceAllString();
     substring();
     find();
+    findAll();
     find_first_of();
     erase();
     intToString();
