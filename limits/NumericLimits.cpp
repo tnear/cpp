@@ -14,6 +14,7 @@ void maxTest()
 {
     int i = std::numeric_limits<int>::max();
     assert(i == 2147483647);
+    assert(i == INT_MAX);
 
     double d = std::numeric_limits<double>::max();
     assert(d == 1.7976931348623157e+308);
@@ -24,6 +25,7 @@ void minTest()
     // note how min() returns a negative result for int
     int i = std::numeric_limits<int>::min();
     assert(i == -2147483648);
+    assert(i == INT_MIN);
 
     // ...but returns a positive result for double
     double d = std::numeric_limits<double>::min();

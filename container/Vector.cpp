@@ -129,7 +129,7 @@ void erase()
 // std::erase, defined in <vector>, C++20
 void eraseCpp20()
 {
-    // erase
+    // erase all ones
     vector<int> v = {2, 1, 1, 3, 1};
     size_t numElemRemoved = std::erase(v, 1);
     assert(numElemRemoved == 3);

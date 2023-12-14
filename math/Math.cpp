@@ -5,6 +5,8 @@
 
 using namespace std;
 
+// "binomial coefficient" aka "n choose k" aka "combinations" aka "nCk"
+// order of elements does not matter for combinations (unlike permutations)
 // C++ does not have a native function for binomial coefficient, so use the recursive definition
 unsigned long long nchoosek(unsigned n, unsigned k)
 {
@@ -63,8 +65,6 @@ unsigned long long catalan(unsigned n)
     return result / (n + 1);
 }
 
-// "binomial coefficient" aka "n choose k" aka "combinations" aka "nCk"
-// order of elements does not matter for combinations (unlike permutations)
 void testNchoosek()
 {
     assert(nchoosek(52, 3) == 22100);

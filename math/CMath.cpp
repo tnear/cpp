@@ -10,7 +10,7 @@ using namespace std;
 void exponential()
 {
     double result = exp(1);
-    assert(result - 2.71828 < .0001);
+    assert(result - 2.718281828 < .0000001);
 }
 
 void naturalLog()

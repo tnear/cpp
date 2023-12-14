@@ -35,7 +35,7 @@ void filterAdaptor()
 
     // use a range adaptor to get all even numbers
     // note: always use 'auto' as the output type of adaptors
-    // note: the range adaptor ('output') values are only computed on demand
+    // note: the range adaptor ('output') values are only computed on demand.
     //       this improves performance and allows creating inf ranges
     auto output = input | views::filter([] (int n) { return n % 2 == 0; });
 

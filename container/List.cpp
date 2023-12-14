@@ -30,7 +30,7 @@ void constructor()
     assert(data2.size() == 3);
 }
 
-// Lists have a sort method which runs in O (n lg n)
+// Lists have a sort method which runs in O(n lg n)
 void sortList()
 {
     list<int> data = {3, 1, 0, 4, 2};

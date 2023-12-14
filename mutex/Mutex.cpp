@@ -1,7 +1,7 @@
 /*
 A mutex is a lockable object that is designed to signal when critical sections
-of code need exclusive access, preventing other threads with the same protection
-from executing concurrently and access the same memory locations.
+of code need exclusive access, preventing other threads from executing concurrently
+and accessing the same memory locations.
 https://cplusplus.com/reference/mutex/mutex/
 */
 
@@ -43,7 +43,7 @@ void _printWithLockGuard(int n, char c)
 
 void _printWithScopedLock(int n, char c)
 {
-    // scoped_lock supports multiple mutexes
+    // scoped_lock, unlike lock_guard, supports multiple mutexes
     std::scoped_lock lock{gMutex, gMutex2};
 
     for (int i = 0; i < n; ++i)

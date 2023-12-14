@@ -93,7 +93,7 @@ void find()
     assert(it == m.end());
 }
 
-// b/c unordered_map doe snot allow duplicates, count() only returns 0 or 1
+// b/c unordered_map does not allow duplicates, count() only returns 0 or 1
 void count()
 {
     const unordered_map<char, int> m = {{'a', 1}, {'b', 2}};
@@ -152,7 +152,7 @@ auto customHashFcn = [](const pair<int, int> &p)
     return h1 ^ h2;
 };
 
-// create a typedef so that this custom map can easily be used as a function argument
+// create a typedef/using so that this custom map can easily be used as a function argument
 using MapWithCustomHasher = unordered_map<pair<int, int>, int, std::function<size_t(const pair<int, int> &)>>;
 
 // uses typedef as function argument
@@ -221,7 +221,7 @@ void iterateChangeValue()
 {
     unordered_map<char, int> m = {{'a', 1}, {'b', 2}, {'c', 3}};
 
-    // key must be const: 'const char' in this case
+    // key must be const: 'const char' in this case (but non-const pair to allow modifying)
     for (pair<const char, int> &myPair : m)
         myPair.second = 0;
 

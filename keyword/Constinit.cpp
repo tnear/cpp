@@ -18,15 +18,15 @@ https://en.cppreference.com/w/cpp/language/constinit
 
 using namespace std;
 
-constinit int value { 10 };
+constinit int gValue { 10 };
 
 void testConstinit()
 {
-    assert(value == 10);
+    assert(gValue == 10);
 
     // with constinit, you can modify the value
-    value = 100;
-    assert(value == 100);
+    gValue = 100;
+    assert(gValue == 100);
 }
 
 void test()

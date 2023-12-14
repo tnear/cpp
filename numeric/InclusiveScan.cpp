@@ -1,5 +1,5 @@
 /*
-Computes an inclusive prefix sum (cumsum) operation.
+inclusive_scan (C++17): computes an inclusive prefix sum (cumsum) operation.
 Input:  [3, 1, 4, 1,  5 , 9,  2,  6]
 Output: [3, 4, 8, 9, 14, 23, 25, 31]
 Defined in header <numeric>

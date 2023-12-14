@@ -1,5 +1,4 @@
-// Random
-//
+// Random number generation
 
 #include <algorithm>
 #include <cassert>

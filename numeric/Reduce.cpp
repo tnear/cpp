@@ -1,6 +1,6 @@
 // std::reduce applies an algorithm to a range of elements in an array
 // By default, it return the sum of all elements in the range.
-// reduce() is similar to accumulate(), but have differences:
+// reduce() is similar to accumulate(), but has important differences:
 //      - reduce supports parallel execution policies
 //      - reduce requires commutative properties (ex: a * b = b * a)
 //        This is because operations may be applied out of order
