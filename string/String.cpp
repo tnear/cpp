@@ -126,7 +126,7 @@ void find_first_of()
     size_t out = s.find_first_of(toFind);
     assert(out == -1);
 
-    // success example:
+    // success example (finds the 'e'):
     out = s.find_first_of("xyze");
     assert(out == 1);
 }
@@ -218,7 +218,7 @@ void stringToDouble()
     assert(result == 123.456);
 }
 
-// C++ does not have a native trim function for strings.
+// C++ lacks a native trim function for strings.
 // https://stackoverflow.com/questions/216823/how-to-trim-an-stdstring
 string& trim(string &str)
 {

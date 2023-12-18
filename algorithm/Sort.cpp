@@ -25,11 +25,16 @@ void sortAscending()
 
 void sortDescending()
 {
-    // use std::greater to sort descending
     vector<int> v = {3, 2, 10, 1};
-    std::sort(v.begin(), v.end(), std::greater<int>());
-
     vector<int> exp = {10, 3, 2, 1};
+
+    // sort descending using reverse iterators
+    std::sort(v.rbegin(), v.rend());
+    assert(v == exp);
+
+    v = {3, 2, 10, 1};
+    // use std::greater to sort descending
+    std::sort(v.begin(), v.end(), std::greater<int>());
     assert(v == exp);
 }
 

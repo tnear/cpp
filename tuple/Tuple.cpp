@@ -1,7 +1,8 @@
 /*
 <tuple>
 https://cplusplus.com/reference/tuple/tuple/
-A tuple is an object capable to hold a collection of elements. Each element can be of a different type.
+A tuple is an object capable to hold a collection of elements.
+Each element can be of a different type.
 */
 
 #include <algorithm>
@@ -45,7 +46,7 @@ void reassign()
 {
     std::tuple<int, bool, char> tup = {2, true, 'c'};
 
-    // change values after tuple has been initialized (std::get returns a reference)
+    // change/modify values after tuple has been initialized (std::get returns a reference)
     std::get<0>(tup) = 1;
     std::get<1>(tup) = false;
     std::get<2>(tup) = 'a';

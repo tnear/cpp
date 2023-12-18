@@ -7,7 +7,6 @@
 
 using namespace std;
 
-// regex_search does NOT require the whole string to match the pattern
 void regexSearch()
 {
     string input = "The year is 2023 and the month is August.";
@@ -38,7 +37,7 @@ void regexSearch()
     assert(match.position(2) == 34); // "August" begins at idx=34
 }
 
-// regex_match requires the whole string to match the pattern
+// regex_match, unlike regex_search, requires the whole string to match the pattern
 void regexMatch()
 {
     const regex pattern("apple");

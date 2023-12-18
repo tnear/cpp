@@ -12,7 +12,7 @@ Notes and code samples using C++ templates.
 
 using namespace std;
 
-// C++ 20: templated function without the 'template' keyword
+// C++ 20: unconstrained auto: templated function without the 'template' keyword
 auto _doubler(auto &arg)
 {
     return arg + arg;

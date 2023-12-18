@@ -9,17 +9,17 @@
 
 using namespace std;
 
-int sum(int x, int y)
+int sum(int x, int y, int z)
 {
-    return x + y;
+    return x + y + z;
 }
 
 void testApply()
 {
-    tuple<int, int> tup = {3, 4};
-    // calls sum with two integer arguments
+    tuple<int, int, int> tup = {3, 4, 5};
+    // calls sum() using each tuple element as an argument
     int ret = std::apply(sum, tup);
-    assert(ret == 7);
+    assert(ret == 12);
 }
 
 void test()

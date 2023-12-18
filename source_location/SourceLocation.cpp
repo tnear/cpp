@@ -1,7 +1,7 @@
 /*
-The std::source_location is a feature introduced in C++20 that provides a way to
-capture information about the source code, such as file names, line numbers,
-function names, etc., without using macros like __FILE__ and __LINE__.
+The std::source_location (C++20) provides a way to capture information
+about the source code, such as file names, line numbers, function
+names, etc., without using macros like __FILE__ and __LINE__.
 https://en.cppreference.com/w/cpp/utility/source_location
 */
 

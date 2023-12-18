@@ -1,6 +1,7 @@
-// string_view family of template specializations provides an efficient way to pass a
-// read-only, exception-safe, non-owning handle to the character data of any string-like objects
-// C++17
+/* string_view (C++17) family of template specializations provides an efficient
+way to pass a read-only, exception-safe, non-owning handle to the character
+data of any string-like objects
+*/
 
 #include <algorithm>
 #include <cassert>
