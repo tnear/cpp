@@ -50,17 +50,19 @@ void lambda()
     assert(v == expV);
 }
 
-// this function returns the index of where each element
-// in the original array would be located in the sorted array
+// this function returns the index of where each element in the
+// original array would be located in the sorted array
 template <typename T>
-vector<int> returnIndexes(const vector<T> &input)
+vector<int> sortedIndexes(const vector<T> &input)
 {
     vector<int> output(input.size());
-    std::iota(output.begin(), output.end(), 0);
+    // create [0, 1, 2, 3, ..., N-1]
+    iota(output.begin(), output.end(), 0);
 
-    std::sort(output.begin(), output.end(), [&] (const int left, const int right)
+    // sort indexes by comparing input *values*
+    sort(output.begin(), output.end(), [&](int leftIdx, int rightIdx)
     {
-        return input[left] < input[right];
+        return input[leftIdx] < input[rightIdx];
     });
 
     return output;
@@ -69,7 +71,7 @@ vector<int> returnIndexes(const vector<T> &input)
 void testReturnIndexes()
 {
     vector<int> v = {3, 1, 2, 5, 4};
-    vector<int> indexes = returnIndexes(v);
+    vector<int> indexes = sortedIndexes(v);
 
     // the lowest number (1) is at idx=1
     // 2nd lowest (2) is at idx=2

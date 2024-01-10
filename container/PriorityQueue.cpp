@@ -111,27 +111,35 @@ void getKLargest()
     assert(act == exp);
 }
 
+struct Data
+{
+    int x = 0;
+    int y = 0;
+};
+
+struct CustomComparator
+{
+    // functor to compare two values. this returns which value goes on *top*
+    bool operator()(Data &left, Data &right)
+    {
+        return left.x > right.x;
+    };
+};
+
 void comparisonFunction()
 {
     // for anything more complex than std::greater, std::greater_equal, std::less, etc.
-    // use this syntax:
+    // use this syntax with a CustomComparator functor:
+    //           <dtype> vector<dtype> <comparator>
+    priority_queue<Data, vector<Data>, CustomComparator> minHeap;
 
-    // compare pair<int, int>
-    auto fcn = [](pair<int, int> &left, pair<int, int> &right)
-    {
-        return left.first > right.first;
-    };
-
-    //             <data type>     vector<data type>      <comp fcn type>        <fcn>
-    priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(fcn)> minHeap(fcn);
-
-    pair<int, int> p = {2, 3};
+    Data p = {2, 3};
     minHeap.push(p);
     p = {1, 4};
     minHeap.push(p);
 
-    pair<int, int> top = minHeap.top();
-    assert(top.first == 1 && top.second == 4);
+    Data top = minHeap.top();
+    assert(top.x == 1 && top.y == 4);
 }
 
 void test()

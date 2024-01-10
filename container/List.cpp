@@ -80,13 +80,29 @@ void removeList()
 // unique() changes the container size (unlike std::unique)
 void uniqueList()
 {
-    list<int> data = {2, 2, 1, 1, 1, 0};
+    list<int> data = {3, 3, 1, 1, 1, 0};
 
     // remove all consecutive duplicates from the list
     data.unique();
 
-    list<int> expData = {2, 1, 0};
+    list<int> expData = {3, 1, 0};
     assert(data == expData);
+}
+
+void erase()
+{
+    list<int> data = {3, 4, 5, 6, 7};
+    list<int> exp;
+
+    // erase idx=2 element, [3, 4, *5*, 7, 7]
+    auto it = data.begin();
+    ++it; // note: linked list iterators do not have random access
+    ++it;
+    assert(*it == 5); // 'it' now points to 5
+    data.erase(it);
+
+    exp = {3, 4, 6, 7};
+    assert(data == exp);
 }
 
 void test()
@@ -96,6 +112,7 @@ void test()
     splice();
     removeList();
     uniqueList();
+    erase();
 }
 
 int main()

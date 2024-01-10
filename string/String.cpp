@@ -34,14 +34,14 @@ void replaceAllChar()
 }
 
 // https://stackoverflow.com/questions/2896600/how-to-replace-all-occurrences-of-a-character-in-string
-string replaceAll(const string &str, const string &from, const string &to)
+string replaceAll(const string &source, const string &from, const string &to)
 {
-    string ret = str;
+    string ret = source;
     size_t start_pos = 0;
     while ((start_pos = ret.find(from, start_pos)) != string::npos)
     {
         ret.replace(start_pos, from.length(), to);
-        start_pos += to.length(); // Handles case where 'to' is a substring of 'from'
+        start_pos += to.length(); // handles case where 'to' is a substring of 'from'
     }
     return ret;
 }
@@ -305,6 +305,30 @@ void split()
     assert(result == exp);
 }
 
+string join(const vector<string> &input, char separator)
+{
+    string result;
+    for (int i = 0; i < input.size(); ++i)
+    {
+        result += input[i];
+        result += separator;
+    }
+
+    result.pop_back();
+    return result;
+}
+
+void join()
+{
+    vector<string> v = {"hello", "world", "test"};
+    string result = join(v, ',');
+    assert(result == "hello,world,test");
+
+    v = {"hello"};
+    result = join(v, ',');
+    assert(result == "hello");
+}
+
 // C++20
 void startsWith()
 {
@@ -341,6 +365,7 @@ void test()
     insert();
     lowerUpper();
     split();
+    join();
     startsWith();
     endsWith();
 }
