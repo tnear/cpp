@@ -281,31 +281,34 @@ void lowerUpper()
 }
 
 // as of C++20, this is still the best way to split strings
-vector<string> split(const string &input, char separator)
+vector<string> split(const string &input, const string &separator)
 {
     vector<string> result;
-    stringstream ss(input);
-    string token;
+    int start = 0;
+    int end = input.find(separator);
 
-    while (getline(ss, token, separator))
+    while (end != string::npos)
     {
-        result.push_back(token);
+        result.push_back(input.substr(start, end - start));
+        start = end + separator.length();
+        end = input.find(separator, start);
     }
 
+    result.push_back(input.substr(start, end));
     return result;
 }
 
 void split()
 {
-    string s = "abc;def;ghi";
-    char separator = ';';
+    string s = "abc; def; ghi";
+    string separator = "; ";
 
     vector<string> result = split(s, separator);
     vector<string> exp = {"abc", "def", "ghi"};
     assert(result == exp);
 }
 
-string join(const vector<string> &input, char separator)
+string join(const vector<string> &input, const string &separator)
 {
     string result;
     for (int i = 0; i < input.size(); ++i)
@@ -314,18 +317,19 @@ string join(const vector<string> &input, char separator)
         result += separator;
     }
 
-    result.pop_back();
+    result = result.substr(0, result.size() - separator.size());
     return result;
 }
 
 void join()
 {
+    string separator = ", ";
     vector<string> v = {"hello", "world", "test"};
-    string result = join(v, ',');
-    assert(result == "hello,world,test");
+    string result = join(v, separator);
+    assert(result == "hello, world, test");
 
     v = {"hello"};
-    result = join(v, ',');
+    result = join(v, separator);
     assert(result == "hello");
 }
 

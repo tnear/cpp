@@ -6,6 +6,7 @@
 #include <cassert>
 #include <functional>
 #include <iostream>
+#include <ranges>
 #include <string>
 #include <set>
 #include <vector>
@@ -182,6 +183,21 @@ void contains()
     assert(!s.contains(3));
 }
 
+void intersectionExample()
+{
+    set<int> s1 = {1, 2, 3};
+    set<int> s2 = {2, 3, 4};
+
+    vector<int> result;
+
+    // [2, 3] are in both sets
+    // note: can also do set_union
+    ranges::set_intersection(s1, s2, back_inserter(result));
+
+    vector<int> exp = {2, 3};
+    assert(result == exp);
+}
+
 void test()
 {
     constructor();
@@ -195,6 +211,7 @@ void test()
     extract();
     merge();
     contains();
+    intersectionExample();
 }
 
 int main()

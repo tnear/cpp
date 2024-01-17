@@ -2,9 +2,11 @@
 // and which allow for fast retrieval of individual elements based on their value.
 // https://cplusplus.com/reference/unordered_set/unordered_set/
 
+#include <algorithm>
 #include <cassert>
 #include <functional>
 #include <iostream>
+#include <ranges>
 #include <string>
 #include <unordered_set>
 
@@ -53,10 +55,26 @@ void contains()
     assert(!s.contains(3));
 }
 
+void intersectionExample()
+{
+    unordered_set<int> s1 = {1, 2, 3};
+    unordered_set<int> s2 = {2, 3, 4};
+
+    vector<int> result;
+
+    // [2, 3] are in both unordered sets
+    // note: can also do set_union
+    ranges::set_intersection(s1, s2, back_inserter(result));
+
+    vector<int> exp = {2, 3};
+    assert(result == exp);
+}
+
 void test()
 {
     customHashFunction();
     contains();
+    intersectionExample();
 }
 
 int main()
