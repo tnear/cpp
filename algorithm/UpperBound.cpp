@@ -29,6 +29,7 @@ void test()
 {
     upperBound();
     // getIndex(); <-- see LowerBound.cpp for an example
+    // customComparator <-- see LowerBound.cpp for an example
 }
 
 int main()
