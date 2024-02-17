@@ -1,5 +1,5 @@
 /*
-
+Utility for printing common STL containers.
 */
 
 #include <algorithm>
