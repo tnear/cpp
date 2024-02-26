@@ -4,9 +4,10 @@
 - Common registers (64-bit): `rax, rbx, rcx, rdx, rsp, rbp, rsi, rdi, r8-r15`
 - Return register: `rax`
 - Function arguments: `rdi (1st param), rsi (2nd param), rdx (3rd param)`
-- Floating-point and SIMD registers (128-bit): `xmm0-xmm15`
-- Floating-point and SIMD registers (256-bit): `ymm0-ymm15`
-- Floating-point and SIMD registers (512-bit): `zmm0-zmm15`
+- Vector, floating-point, and SIMD registers
+    - 128-bit: `xmm0-xmm15`
+    - 256-bit: `ymm0-ymm15`
+    - 512-bit: `zmm0-zmm15`
 
 ### SIMD example
 ```
