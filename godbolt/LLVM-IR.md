@@ -2,46 +2,88 @@
 
 Under Add Pane, choose `LLVM IR`.
 
-C++:
-```cpp
-int popcount(int n) {
-    int count = 0;
-    while (n) {
-        n &= (n - 1); // clear LSB
-        count++;
-    }
-    return count;
+LLVM IR is *simpler* than assembly. It has a smaller instruction set. It has infinite registers/variables. It does not manage a FLAGS register. Additionally, it has explicit data types.
+
+*Source: https://youtu.be/wt7a5BOztuM*
+
+## Basic example
+```llvm
+define i64 @fib(i64) local_unnamed_addr #0 {
+    %2 = icmp slt i64 %0, 2
+    br i1 %2, label %9, label %3
+
+    ; <label>:3:
+    %4 = add nws i64 %0, -1
+    %5 = tail call i64 @fib(i64 %4)
+    %6 = add nws i64 %0, -2
+    %7 = tail call i64 @fib(i64 %6)
+    %8 = add nws i64 %7, %5
+    ret i64 %8
+
+    ; <label>:9:
+    ret i64 %0
 }
 ```
+### Function
+`@fib(i64)` means that the function above is called `fib` and accepts one input argument of type `int64`.
 
-LLVM IR:
+### Registers
+- `%0`, `%1`, `%2`, ...: LLVM IR registers. Similar to variables.
+
+### Data types
+- `i64`: 64-bit signed integer
+- `i1`: 1-bit integer (bool)
+- `i16*`: pointer to 16-bit integer
+- `[5 x i32]`: array of 5 integers
+- Struct: `{ <type>, ... }`
+- Vector: `< <number> x <type> >`
+
+### Function calls
+```llvm
+%4 = add nws i64 %0, -1 ; this subtracts 1 from %0 and assigns to 4
+%5 = tail call i64 @fib(i64 %4) ; this calls %5 = fib(%4)
 ```
-module asm ".globl _ZSt21ios_base_library_initv"
 
-define dso_local noundef i32 @popcount(int)(i32 noundef %n) local_unnamed_addr {
-entry:
-  tail call void @llvm.dbg.value(metadata i32 %n, metadata !1137, metadata !DIExpression())
-  tail call void @llvm.dbg.value(metadata i32 0, metadata !1138, metadata !DIExpression())
-  %tobool.not4 = icmp eq i32 %n, 0
-  br i1 %tobool.not4, label %while.end, label %while.body
+## Aggregate type
+Aggregate types are stored in memory instead of registers. An example of an aggregate type is an array or struct.
 
-while.body:
-  %count.06 = phi i32 [ %inc, %while.body ], [ 0, %entry ]
-  %n.addr.05 = phi i32 [ %and, %while.body ], [ %n, %entry ]
-  tail call void @llvm.dbg.value(metadata i32 %count.06, metadata !1138, metadata !DIExpression())
-  tail call void @llvm.dbg.value(metadata i32 %n.addr.05, metadata !1137, metadata !DIExpression())
-  %sub = add nsw i32 %n.addr.05, -1
-  %and = and i32 %sub, %n.addr.05
-  tail call void @llvm.dbg.value(metadata i32 %and, metadata !1137, metadata !DIExpression())
-  %inc = add nuw nsw i32 %count.06, 1
-  tail call void @llvm.dbg.value(metadata i32 %inc, metadata !1138, metadata !DIExpression())
-  %tobool.not = icmp eq i32 %and, 0
-  br i1 %tobool.not, label %while.end, label %while.body
+Accessing the aggregate type involves computing an address then reading or writing memory.
 
-while.end:
-  %count.0.lcssa = phi i32 [ 0, %entry ], [ %inc, %while.body ]
-  ret i32 %count.0.lcssa
-}
-
-declare void @llvm.dbg.value(metadata, metadata, metadata) #1
+```c
+int A[7]; // create an array of 7 integers
+A[x];     // get Xth element of array A
 ```
+
+Corresponding LLVM IR:
+```llvm
+; this line computes an address and stores it in %5
+%5 = getelementptr inbounds [7 x i32], [7 x i32] * %2, i64 0, i64 %4
+
+; this line takes that address (in %5) and stores the value in %6
+%6 = load i32, i32* %5, align 4
+```
+
+### getelementptr
+```%5 = getelementptr [7 x i32], [7 x i32] * %2, i64 0, i64 %4
+    a                    b                    c      d       e
+```
+
+- a = output
+- b = array size
+- c = pointer to memory
+- d = index
+- e = index
+
+`address = %2 + 0 + %4`.
+
+## Basic blocks
+The body of a function definition is partitioned into *basic blocks*. These are sequences of instructions where control only enters through the first instruction and only exits from the last.
+
+Control flow instructions (such as the conditional branch instruction, `br`) create control-flow edges between the basic blocks of a function. This creates a control-flow graph (CFG).
+
+## Common instructions
+- `icmp`: integer comparison
+- `br`: conditional branch. Ex: `br i1 %2, label %3, label %4
+    - This checks the boolean (`i1`) in register `%2`. If it's true, go to label `%3`. Otherwise, to go label `%4`.
+- `ret`: return. Ex: `ret i64 %0` returns an `i64` in register `%0`.
+- `phi`: 

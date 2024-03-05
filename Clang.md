@@ -32,4 +32,6 @@ Note: `.exe` helps Windows to recognize an object file as an executable.
 | `-g`             | Generates source-level debug information, including file names and line numbers.                          |
 | `-Wall`          | Enables most warning messages.                                                                            |
 | `-Wextra`        | Enables extra warning messages in addition to those enabled by `-Wall`.                                   |
+| `-S`             | Compiles source files to assembly files (output is assembly  plaintext file).                                                    |
 | `-c`             | Compiles source files to object files without linking.                                                    |
+| `-S -emit-llvm`  | Produce LLVM IR |
