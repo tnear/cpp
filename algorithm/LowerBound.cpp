@@ -92,6 +92,9 @@ void customComparator()
     // this returns 30 b/c 30 is the first element which does not come before 25
     auto it = std::lower_bound(data.begin(), data.end(), 25, comp);
     assert((*it).field == 30);
+
+    // ranges not supported?
+    //auto it2 = ranges::lower_bound(data, 25, comp);
 }
 
 void test()

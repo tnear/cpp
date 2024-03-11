@@ -49,7 +49,45 @@ void write()
     }
 
     // delete file when done
-    std::filesystem::remove(fileName);
+    filesystem::remove(fileName);
+}
+
+bool writeStringsToFile(const vector<string> &lines, const string &fileName)
+{
+    // open a file in write mode
+    ofstream outFile(fileName);
+
+    if (!outFile.is_open())
+        return false; // cannot be opened
+
+    // write lines
+    for (const string &line : lines)
+        outFile << line << endl;
+
+    // close file when done
+    outFile.close();
+    return true;
+}
+
+vector<string> readLinesFromFile(const string &fileName)
+{
+    // open file
+    ifstream inFile(fileName);
+
+    if (!inFile.is_open())
+        return {}; // could not open file
+
+    vector<string> lines;
+    string line;
+    // read each line
+    while (getline(inFile, line))
+    {
+        lines.push_back(line);
+    }
+
+    // close file when done
+    inFile.close();
+    return lines;
 }
 
 void test()
@@ -61,6 +99,6 @@ int main()
 {
     test();
 
-    std::cout << std::endl <<  __FILE__ " tests passed!" << std::endl;
+    cout << endl <<  __FILE__ " tests passed!" << endl;
     return 0;
 }

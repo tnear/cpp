@@ -159,6 +159,14 @@ void erase()
     assert(s == "helo");
 }
 
+// std::erase (C++20)
+void eraseCpp20()
+{
+    string s = "aZZbZcZZZ";
+    std::erase(s, 'Z');
+    assert(s == "abc");
+}
+
 // note: std::to_string cannot customize precision, use stringstream instead
 void intToString()
 {
@@ -220,7 +228,7 @@ void stringToDouble()
 
 // C++ lacks a native trim function for strings.
 // https://stackoverflow.com/questions/216823/how-to-trim-an-stdstring
-string& trim(string &str)
+string &trim(string &str)
 {
     str.erase(str.find_last_not_of(' ') + 1); // suffix spaces
     str.erase(0, str.find_first_not_of(' ')); // prefix spaces
@@ -276,7 +284,7 @@ void lowerUpper()
     // ranges (C++20)
     s = "Hello";
     auto conv = s | views::transform(::tolower);
-    string result { conv.begin(), conv.end() };
+    string result{conv.begin(), conv.end()};
     assert(result == "hello");
 }
 
@@ -359,6 +367,7 @@ void test()
     findAll();
     find_first_of();
     erase();
+    eraseCpp20();
     intToString();
     stringToInt();
     append();
@@ -378,6 +387,7 @@ int main()
 {
     test();
 
-    std::cout << std::endl <<  __FILE__ " tests passed!" << std::endl;
+    std::cout << std::endl
+              << __FILE__ " tests passed!" << std::endl;
     return 0;
 }
