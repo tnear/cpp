@@ -28,10 +28,12 @@ void executionPolicy()
 void parallelSort()
 {
     // use execution::par in <execution> to run an algorithm in parallel
-    // note: ranges do not support execution policies as of C++20
+    // note: <ranges> do not support execution policies as of C++20
     vector<int> data = {0, 4, 1, 2, 5, 3, 6};
     vector<int> exp = {0, 1, 2, 3, 4, 5, 6};
     std::sort(std::execution::par, data.begin(), data.end());
+
+    // not supported yet: ranges::sort(execution::par, data);
     assert(data == exp);
 }
 

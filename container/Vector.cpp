@@ -81,6 +81,11 @@ void removeDuplicates()
     vector<int> expV = {1, 2, 3};
     assert(v == expV);
 
+    // one-liner
+    v = {1,1,2,3,3};
+    v.erase(unique(v.begin(), v.end()), v.end());
+    assert(v == expV);
+
     /*
     // erasing an end() iterator causes undefined behavior
     it = v.end();

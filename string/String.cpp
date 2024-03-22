@@ -215,6 +215,11 @@ void removeDuplicates()
     // erase them
     s.erase(it, s.end());
     assert(s == "abc");
+
+    // one-liner
+    s = "aabcc";
+    s.erase(unique(s.begin(), s.end()), s.end());
+    assert(s == "abc");
 }
 
 // stod: str -> double
