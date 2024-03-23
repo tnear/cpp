@@ -1,6 +1,6 @@
 # Virtual
 
-The virtual keyword in C++ is used to indicate that a method can be overridden in derived classes.
+The `virtual` keyword in C++ is used to indicate that a method can be overridden in derived classes.
 
 ## Polymorphism
 Polymorphism allows methods to do different things based on the object that is calling them.

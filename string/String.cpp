@@ -68,7 +68,7 @@ void substring()
     assert(sub == "world");
 }
 
-// find substring within a string
+// find substring within a string (note: string.contains is part of C++23)
 // size_t idx = haystack.find(needle)
 void find()
 {
