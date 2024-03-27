@@ -28,7 +28,6 @@ Usage:
 ```cpp
 Base* basePtr = new Derived();
 basePtr->show(); // calls Derived::show(), not Base::show()
-
 ```
 
 ## Virtual table
@@ -51,3 +50,11 @@ Each class with virtual functions adds slightly more memory overhead, as it need
 
 ### vpointer
 The `vpointer` is a pointer to that class's corresponding virtual table. For example, Class A's `vpointer` would point to the `vtable` for Class A. The `vtable` contains function pointers to the virtual functions.
+
+## Pure virtual functions
+A pure virtual function is not implemented in the base class. This makes the base class *abstract*.
+
+```cpp
+// use the pure specifier '= 0' to make a pure virtual function
+virtual void myFunction() = 0;
+```
