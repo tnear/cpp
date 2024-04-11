@@ -116,6 +116,19 @@ void lowerBound()
     vector<int> result { s.begin(), s.end() };
     vector<int> expV = {10, 20, 60, 70};
     assert(result == expV);
+
+    v = {10, 20, 30, 40};
+    s.clear();
+    s.insert(v.begin(), v.end());
+
+    auto it = s.lower_bound(25);
+    assert(*it == 30);
+    // erase one value (30)
+    s.erase(it);
+    expV = {10, 20, 40};
+    result.clear();
+    result.insert(result.end(), s.begin(), s.end());
+    assert(result == expV);
 }
 
 // Returns the bounds of a range that includes all the elements that are equivalent to val.

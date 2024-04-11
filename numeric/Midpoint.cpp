@@ -29,9 +29,21 @@ void mid()
     assert(result == -4);
 }
 
+void orderMatters()
+{
+    // midpoint rounds toward the *first* argument
+    int result = midpoint(1, 4); // rounds 2.5 toward 1 to produce 2
+    assert(result == 2);
+
+    result = midpoint(4, 1); // rounds 2.5 toward 4 to produce 3
+    assert(result == 3);
+
+}
+
 void test()
 {
     mid();
+    orderMatters();
 }
 
 int main()

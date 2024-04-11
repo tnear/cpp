@@ -362,6 +362,13 @@ void endsWith()
     assert(!s.ends_with("my test"));
 }
 
+void countOfCharacter()
+{
+    string s = "hey hello hola";
+    int num = ranges::count(s, 'e');
+    assert(num == 2);
+}
+
 void test()
 {
     replace();
@@ -386,6 +393,7 @@ void test()
     join();
     startsWith();
     endsWith();
+    countOfCharacter();
 }
 
 int main()
