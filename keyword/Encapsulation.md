@@ -1,6 +1,6 @@
 # Encapsulation
 
-Encapsulation restricts direct access to some of an object's components, which is a way of preventing accidental modification of data. Encapsulation ensures that an object's internal state cannot be accessed directly. Instead, interactions are performed through its public methods, providing a controlled interface. This leads to increased security and data integrity.
+Encapsulation restricts direct access to some of an object's components, which is a way of preventing accidental modification of data. Encapsulation ensures that an object's internal state cannot be accessed directly. Instead, interactions are performed through public methods, providing a controlled interface. This leads to increased security and data integrity.
 
 ## Example
 ```cpp

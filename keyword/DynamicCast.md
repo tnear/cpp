@@ -1,6 +1,6 @@
 # dynamic_cast
 
-`dynamic_cast` is used in C++ for safely converting pointers of a base type into pointers of a derived type at runtime. It checks the validity of the cast and returns nullptr for pointers (or throws bad_cast for references) if the cast is not valid.
+`dynamic_cast` is used in C++ for safely converting pointers of a base type into pointers of a derived type at runtime. It checks the validity of the cast and returns `nullptr` for pointers (or throws `bad_cast` for references) if the cast is not valid.
 
 ## Example
 ```cpp

@@ -64,8 +64,9 @@ Corresponding LLVM IR:
 ```
 
 ### getelementptr
-```%5 = getelementptr [7 x i32], [7 x i32] * %2, i64 0, i64 %4
-    a                    b                    c      d       e
+```
+%5 = getelementptr [7 x i32], [7 x i32] * %2, i64 0, i64 %4
+a                     b                   c      d       e
 ```
 
 - a = output
@@ -88,7 +89,7 @@ This invariant makes it easier for compilers to understand and process source co
 
 ## Common instructions
 - `icmp`: integer comparison
-- `br`: conditional branch. Ex: `br i1 %2, label %3, label %4
+- `br`: conditional branch. Ex: `br i1 %2, label %3, label %4`
     - This checks the boolean (`i1`) in register `%2`. If it's true, go to label `%3`. Otherwise, to go label `%4`.
 - `ret`: return. Ex: `ret i64 %0` returns an `i64` in register `%0`.
 - `phi`: see below
@@ -100,7 +101,7 @@ Consider this `for` loop:
 This creates this `phi` instruction:
 `%9 = phi i64 [%14, %8], [0, %6]`.
 
-There are two sets of brackets ([]). For `[0, %6]`, it means that if execution came from basic block `%6`, assign the value of 9 to `%9`. Basic block `%6` (not shown) is the entry point to the function. It initializes `i` to 0.
+There are two sets of brackets. For `[0, %6]`, it means that if execution came from basic block `%6`, assign the value of 0 to the output register `%9`. Basic block `%6` (not shown) is the entry point to the function. It initializes `i` to 0.
 
 For `[%14, %8]`, it means that if execution came from basic block `%8`, assign value from register `%14`. The `for` loop belongs to BB `%8`, so this is jumping back to itself. The increment of register `%14` is done farther down which jumps back to the phi instruction.
 

@@ -2,14 +2,14 @@
 
 Under Add Pane, choose `AST`.
 
-You can mouse over the source code and it will highlight the relevant section of the AST.
+Mouse over the source code to highlight the relevant section of the AST.
 
 C++:
 ```cpp
 int popcount(int n) {
     int count = 0;
     while (n) {
-        n &= (n - 1); // Clear the least significant bit set
+        n &= (n - 1); // clear the least significant bit set
         count++;
     }
     return count;

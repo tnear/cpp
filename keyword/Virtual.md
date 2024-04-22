@@ -31,7 +31,7 @@ basePtr->show(); // calls Derived::show(), not Base::show()
 ```
 
 ## Virtual table
-Virtual tables, or vtables, are used by C++ compilers to support dynamic dispatch of function calls, enabling polymorphism. Each class that uses virtual functions has its own vtable. This table is an array of pointers to the virtual functions accessible by the class's objects.
+Virtual tables, or vtables, are used by C++ compilers to support dynamic dispatching of function calls, enabling polymorphism. Each class that uses virtual functions has its own vtable. This table is an array of pointers to the virtual functions accessible by the class's objects.
 
 ### Structure
 Each entry in the vtable points to an instance of a virtual function accessible by the class.

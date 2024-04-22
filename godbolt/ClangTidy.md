@@ -11,8 +11,7 @@ In the `Arguments` section, add flags such as: `--checks=modernize-*,performance
 int func(vector<int> v)
 {
     int result = 0;
-    for (vector<int>::iterator it = v.begin();
-        it != v.end(); ++it)
+    for (vector<int>::iterator it = v.begin(); it != v.end(); ++it)
     {
         result += *it;
     }
