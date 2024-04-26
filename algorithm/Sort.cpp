@@ -34,7 +34,7 @@ void sortDescending()
 
     v = {3, 2, 10, 1};
     // use std::greater to sort descending
-    std::sort(v.begin(), v.end(), std::greater<int>());
+    std::sort(v.begin(), v.end(), ranges::greater());
     assert(v == exp);
 }
 

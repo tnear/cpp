@@ -2,6 +2,7 @@
 jthread - joining thread (C++20) - is the same as std::thread except jthread's
 destructor automatically joins. std::thread terminates the program in its
 destructor if join() or detach() had not been called.
+Prefer std::jthread over std::thread.
 https://en.cppreference.com/w/cpp/thread/jthread
 */
 

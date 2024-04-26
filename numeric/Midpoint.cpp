@@ -20,7 +20,7 @@ void mid()
     int result = std::midpoint(2, 5);
     assert(result == 3);
 
-    // (-5 + -4) / 2 = -9 / 2 = -4.5. std::midpoint does floor:
+    // (-5 + -4) / 2 = -9 / 2 = -4.5. std::midpoint rounds toward the first argument
     result = midpoint(-5, -4);
     assert(result == -5);
 

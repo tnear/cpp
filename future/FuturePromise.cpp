@@ -54,6 +54,22 @@ void asyncTest()
     cout << "\nResult " << (result ? "is" : "is not") << " prime\n";
 }
 
+void asyncVector()
+{
+    constexpr int numThreads = 4;
+    vector<future<bool>> v(numThreads);
+
+    for (int i = 0; i < numThreads; ++i)
+    {
+        v[i] = async(launch::async, _isPrime, 144444457 + i);
+    }
+
+    assert(v[0].get());
+    assert(!v[1].get());
+    assert(!v[2].get());
+    assert(!v[3].get());
+}
+
 void _worker(std::promise<int> &&promise)
 {
     // simulate work
@@ -72,20 +88,18 @@ void promiseTest()
     std::future<int> future = promise.get_future();
 
     // start a thread and pass in promise
-    std::thread t(_worker, std::move(promise));
+    std::jthread t(_worker, std::move(promise));
 
     // wait for the result (this will block until the worker thread sets the value)
     int result = future.get();
     assert(result == 101);
-
-    // join thread when done
-    t.join();
 }
 
 void test()
 {
     futureStatus();
     asyncTest();
+    asyncVector();
     promiseTest();
 }
 

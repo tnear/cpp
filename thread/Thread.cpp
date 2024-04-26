@@ -55,7 +55,9 @@ void _increment(int &n)
 void arguments()
 {
     // _increment accepts int&. This thread increments that value.
-    // note: std::atomic is a better way to do this.
+    // reference parameters are used to return values.
+    // note: std::atomic is a better way to increment and future/promise
+    //       are better for returning values.
     int n = 0;
     std::thread t1 { _increment, std::ref(n) };
     t1.join(); // wait for thread to execute
@@ -125,6 +127,11 @@ void yield()
     }
 }
 
+void returnValue()
+{
+    
+}
+
 void test()
 {
     sleepFor();
@@ -133,6 +140,7 @@ void test()
     arguments();
     multipleThreads();
     yield();
+    returnValue();
 }
 
 int main()

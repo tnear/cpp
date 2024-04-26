@@ -8,6 +8,7 @@ https://en.cppreference.com/w/cpp/ranges
 #include <algorithm>
 #include <cassert>
 #include <iostream>
+#include <queue>
 #include <ranges>
 #include <string>
 #include <unordered_map>
@@ -24,7 +25,7 @@ void rangeSort()
     assert(ranges::is_sorted(v));
 
     // descending
-    ranges::sort(v, std::greater<int>());
+    ranges::sort(v, ranges::greater());
     vector<int> exp = {4, 3, 2, 1, 0};
     assert(v == exp);
 }
@@ -34,10 +35,9 @@ void filterAdaptor()
     vector<int> input = {1, 2, 3, 4, 5, 6};
 
     // use a range adaptor to get all even numbers
-    // note: always use 'auto' as the output type of adaptors
     // note: the range adaptor ('output') values are only computed on demand.
     //       this improves performance and allows creating inf ranges
-    auto output = input | views::filter([] (int n) { return n % 2 == 0; });
+    ranges::filter_view output = input | views::filter([] (int n) { return n % 2 == 0; });
 
     // convert to vector
     vector<int> evenNumbers(output.begin(), output.end());
@@ -100,6 +100,22 @@ void leftTrimAndUppercase()
     cout << result;
 }
 
+void rangesGreater()
+{
+    // use ranges::greater to sort descending
+    vector<int> v = {3, 1, 2, 4};
+    ranges::sort(v, ranges::greater());
+    vector<int> exp = {4, 3, 2, 1};
+    assert(v == exp);
+
+    // use ranges::greater to create a minHeap instead of using greater<pair<int, int>>
+    priority_queue<pair<int, int>, vector<pair<int, int>>, ranges::greater> minHeap;
+    minHeap.push({3, 101});
+    minHeap.push({2, 202});
+
+    assert(minHeap.top().first == 2);
+}
+
 void test()
 {
     rangeSort();
@@ -107,6 +123,7 @@ void test()
     compose();
     drop();
     leftTrimAndUppercase();
+    rangesGreater();
 }
 
 int main()

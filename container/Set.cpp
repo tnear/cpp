@@ -56,7 +56,7 @@ void sorted()
 void reverseSort()
 {
     // use std::greater to create elements in descending order
-    set<int, std::greater<int>> s;
+    set<int, ranges::greater> s;
 
     s.insert(3);
     s.insert(2);

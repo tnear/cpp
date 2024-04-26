@@ -28,8 +28,8 @@ void isMinHeap()
     vector<int> v = {2, 1, 3, 5, 4};
 
     // make a min heap by using '>' operator
-    std::make_heap(v.begin(), v.end(), std::greater<>{});
-    assert(std::is_heap(v.begin(), v.end(), std::greater<>{}));
+    std::make_heap(v.begin(), v.end(), ranges::greater());
+    assert(std::is_heap(v.begin(), v.end(), ranges::greater()));
     assert(v[0] == 1);
 }
 

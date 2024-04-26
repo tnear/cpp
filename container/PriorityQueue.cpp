@@ -60,7 +60,7 @@ void minHeap()
 
     // create a min heap by using std::greater<int>
     // this also specifies an underlying vector<int> container
-    priority_queue<int, vector<int>, greater<int>> minHeap = {v.begin(), v.end()};
+    priority_queue<int, vector<int>, ranges::greater> minHeap = {v.begin(), v.end()};
 
     vector<int> result;
     while (!minHeap.empty())
@@ -81,7 +81,7 @@ void getKLargest()
     const int k = 3; // track the 3 largest
 
     // getting the k largest requires a *min* queue (not a max queue)
-    priority_queue<int, vector<int>, greater<int>> minHeap;
+    priority_queue<int, vector<int>, ranges::greater> minHeap;
 
     for (int value : values)
     {

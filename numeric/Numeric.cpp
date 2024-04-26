@@ -9,12 +9,14 @@
 
 using namespace std;
 
+// gcd is C++17
 void testGcd()
 {
     int result = std::gcd(12, 8);
     assert(result == 4);
 }
 
+// lcm is C++17
 void testLcm()
 {
     int result = std::lcm(12, 8);

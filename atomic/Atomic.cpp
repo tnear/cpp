@@ -38,15 +38,17 @@ void fetchAdd()
 {
     atomic<int> counter{0};
     constexpr int NUM = 10000;
-    vector<thread> threads;
+    vector<jthread> threads;
 
     auto atomicIncrementFcn = [&]()
     {
         for (int i = 0; i < NUM; ++i)
         {
             // adds 2 to counter atomically using operator++
-            // note: counter = counter + 2 is *not* atomic
-            //counter += 2;
+            // counter++;
+            // counter++;
+
+            // note: counter = counter + 2 is *not* atomic: counter += 2;
 
             // fetch_add allows specifying memory order plus it returns the previous value
             int prevValue = counter.fetch_add(2, memory_order_relaxed);
@@ -56,13 +58,11 @@ void fetchAdd()
     for (int i = 0; i < NUM; ++i)
     {
         // create threads, all of which increment the shared variable 'counter'
-        threads.push_back(thread{atomicIncrementFcn});
+        threads.push_back(jthread{atomicIncrementFcn});
     }
 
-    for (thread &t : threads)
-    {
-        t.join();
-    }
+    // make jthreads go out of scope
+    threads.clear();
 
     // the atomic variable ensured each increment happened atomically
     assert(counter == 2 * NUM * NUM);
