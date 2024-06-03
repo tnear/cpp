@@ -23,7 +23,7 @@ For programming language, select `Analysis`. Paste in the assembly code (generat
 Then choose `llvm-mca (trunk)` for the compiler. The `-timeline` flag can show when instructions get Decoded/executing/stalled/etc:
 
 ```
-Index     0123456789    
+Index     0123456789
 
 [0,0]     DeeeeeeER .   movdqu       xmm2, xmmword ptr [r8 + 4*rax]
 [0,1]     D======eER.   paddd        xmm0, xmm2
@@ -120,8 +120,8 @@ Resources:
 [11]  - ICXPort9
 
 Resource pressure per iteration:
-[2]    [3]    [4]    [5]    [6]    [7]    [8]    
-8.76   8.74   3.50   3.50    -     8.74   8.76   
+[2]    [3]    [4]    [5]    [6]    [7]    [8]
+8.76   8.74   3.50   3.50    -     8.74   8.76
 
 Resource pressure by instruction:
 [2]    [3]    [4]    [5]    [6]    [7]    [8]    Instructions:

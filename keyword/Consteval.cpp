@@ -22,7 +22,7 @@ consteval int square(int n)
     return n * n;
 }
 
-// note: 'constexpr' here causes a build error:
+// note: 'constexpr' instead of 'consteval' here causes a build error:
 // 'square': call to immediate function is not a constant expression
 consteval int doubleSquare(int n)
 {

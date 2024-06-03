@@ -127,11 +127,6 @@ void yield()
     }
 }
 
-void returnValue()
-{
-    
-}
-
 void test()
 {
     sleepFor();
@@ -140,7 +135,6 @@ void test()
     arguments();
     multipleThreads();
     yield();
-    returnValue();
 }
 
 int main()

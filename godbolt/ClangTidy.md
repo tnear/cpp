@@ -25,7 +25,7 @@ Output:
 ```
 <source>:22:5: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
    22 | int func(vector<int> v)
-      | ~~~ ^                  
+      | ~~~ ^
       | auto                    -> int
 <source>:25:5: warning: use range-based for loop instead [modernize-loop-convert]
    25 |     for (vector<int>::iterator it = v.begin();

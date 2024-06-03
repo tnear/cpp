@@ -1,5 +1,7 @@
 # Virtual Godbolt
 
+See also [CRTP Goldbolt](CRTPGodbolt.md).
+
 *https://godbolt.org/z/TPT1dcP34*
 
 ## Example
