@@ -17,6 +17,7 @@ void constructor()
 
     // range constructor uses iterators and preallocates
     vector<int> v = {s.begin(), s.end()};
+    ranges::sort(v);
 
     vector<int> expResult = {1, 2, 3, 4};
     assert(v == expResult);
