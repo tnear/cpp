@@ -1,10 +1,8 @@
 # LLVM IR
 
-Under Add Pane, choose `LLVM IR`.
+Under "Add a new pane" in compilation settings, choose `LLVM IR`.
 
 LLVM IR is *simpler* than assembly. It has a smaller instruction set. It has infinite registers/variables. It does not manage a FLAGS register. Additionally, it has explicit data types.
-
-*Source: https://youtu.be/wt7a5BOztuM*
 
 ## Basic example
 ```llvm
@@ -24,6 +22,7 @@ define i64 @fib(i64) local_unnamed_addr #0 {
     ret i64 %0
 }
 ```
+
 ### Function
 `@fib(i64)` means that the function above is called `fib` and accepts one input argument of type `int64`.
 
@@ -111,3 +110,5 @@ For `[%14, %8]`, it means that if execution came from basic block `%8`, assign v
 - `noalias`: corresponds to `restrict` keyword
 - `readonly`: corresponds to `const` keyword
 
+## Resources
+- https://youtu.be/wt7a5BOztuM

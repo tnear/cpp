@@ -369,6 +369,24 @@ void countOfCharacter()
     assert(num == 2);
 }
 
+// prefer to initialize member variables inline
+// instead of creating a default constructor to do it
+class MemberInit
+{
+public:
+    string s = "default";
+    string s2{"default2"};
+
+    // no default constructor needed
+};
+
+void classMemberInit()
+{
+    MemberInit m;
+    assert(m.s == "default");
+    assert(m.s2 == "default2");
+}
+
 void test()
 {
     replace();
@@ -394,13 +412,14 @@ void test()
     startsWith();
     endsWith();
     countOfCharacter();
+    classMemberInit();
 }
 
 int main()
 {
     test();
 
-    std::cout << std::endl
-              << __FILE__ " tests passed!" << std::endl;
+    cout << endl
+              << __FILE__ " tests passed!" << endl;
     return 0;
 }

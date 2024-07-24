@@ -1,5 +1,8 @@
 # Godbolt Compiler Explorer
 
+## Libraries
+To include libraries such as Abseil, Boost, Google Benchmark, sqlite, and Intel TBB, click the `Include libs` button (book icon) in the compiler pane.
+
 ## Dashboard
 Dashboard showing site stats: [stats.compiler-explorer.com](stats.compiler-explorer.com).
 
