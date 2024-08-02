@@ -3,3 +3,6 @@
 *.ilk
 *.obj
 *.pdb
+
+# mac metadata
+.DS_Store

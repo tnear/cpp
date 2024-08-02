@@ -4,7 +4,7 @@
 
 To compare strings, `FlyweightString` only needs to compare pointers yielding `O(1)` string comparison performance regardless of string length.
 
-To create strings, `FlyweightString` much check if the string already exists in the string pool:
+To create strings, `FlyweightString` must check if the string already exists in the string pool:
 - if so, return pointer to existing string in pool.
 - if not, insert into pool then return new address.
 
